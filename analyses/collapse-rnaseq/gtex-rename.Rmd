@@ -1,0 +1,59 @@
+---
+title: "GTEx renaming"
+output: html_notebook
+---
+
+In this notebook we will subset `gtex_target_tcga-gene-counts-rsem-expected_count-collapsed.rds` from v4 release to only samples that have Kids_First_Biospecimen_ID ( GTEX Barcode ) assigned in `histologies.tsv`
+
+```{r}
+library("tidyverse")
+# merged and collapsed files
+read_expected_count <- readRDS("../../data/v4/gtex_target_tcga-gene-counts-rsem-expected_count-collapsed.rds")
+# mapping from barcode to sample_id
+mapping_KR <- read_tsv("input/gtex_mapping.txt")
+# histology from OT
+histology_gtex <- read_tsv("input/histologies.tsv") %>% 
+  filter(grepl("GTEX",Kids_First_Biospecimen_ID),experimental_strategy=="RNA-Seq") %>%
+  left_join(mapping_KR,by=c("Kids_First_Biospecimen_ID"="sample_barcode"))
+# gtex processed samples manifest
+gtex_JL_processed <- read_tsv("input/GTEx_v8_Cerebellum_AdrenalGland.manifest - GTEx_v8_Cerebellum_AdrenalGland.manifest.tsv")
+```
+
+## Plot overlap of gtex barcodes
+```{r}
+x<-list(histologies=histology_gtex$Kids_First_Biospecimen_ID,mapping=mapping_KR$sample_barcode,GTEX_v8_Cerebellum_AdrenalGland=gtex_JL_processed$sample_id)
+
+library("VennDiagram")
+grid.newpage()
+venn_object<-VennDiagram::venn.diagram(x,filename = NULL)
+grid.draw(venn_object)
+```
+7123 gtex barcode are in the collapsed rds file and histologies file.
+
+## GTEx rename sample_ids in rds  file  to barcode
+```{r}
+# get col index to rename  
+rename_cols_index <- which(colnames(read_expected_count) %in% histology_gtex$sample_id.y[!is.na(histology_gtex$sample_id.y)])
+# get colnames for samples that don't match histology
+remove_cols <-setdiff(mapping_KR$sample_id,histology_gtex$sample_id.y)
+
+
+# get barcode to replace colnames  
+rename_cols_barcode <-unlist(lapply (
+  colnames(read_expected_count)[rename_cols_index] ,
+  function(x) 
+    histology_gtex[grep(x, histology_gtex$sample_id.y),
+                   "Kids_First_Biospecimen_ID"] 
+  )
+)
+
+
+# replace colnames
+read_expected_count <- read_expected_count %>%
+  select(-all_of(remove_cols)) %>%
+  rename_at(vars(rename_cols_index), ~rename_cols_barcode) 
+
+saveRDS(read_expected_count,"../../data/v5/gtex_target_tcga-gene-counts-rsem-expected_count-collapsed.rds")
+
+
+```

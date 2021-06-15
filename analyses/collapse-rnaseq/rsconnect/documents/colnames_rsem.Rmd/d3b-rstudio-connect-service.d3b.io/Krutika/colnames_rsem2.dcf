@@ -1,0 +1,12 @@
+name: colnames_rsem2
+title: colnames_rsem
+username: Krutika
+account: Krutika
+server: d3b-rstudio-connect-service.d3b.io
+hostUrl: https://d3b-rstudio-connect-service.d3b.io/__api__
+appId: 2
+bundleId: 2
+url: https://d3b-rstudio-connect-service.d3b.io/content/372f9bc9-f976-4654-9619-0de2f1b57960/
+when: 1623774740.88163
+asMultiple: FALSE
+asStatic: FALSE

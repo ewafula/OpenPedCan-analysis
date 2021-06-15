@@ -7,53 +7,165 @@ In this notebook we will subset `gtex_target_tcga-gene-counts-rsem-expected_coun
 
 ```{r}
 library("tidyverse")
+library("VennDiagram")
 # merged and collapsed files
 read_expected_count <- readRDS("../../data/v4/gtex_target_tcga-gene-counts-rsem-expected_count-collapsed.rds")
-# mapping from barcode to sample_id
+
+# mapping GTEX from barcode to sample_id
 mapping_KR <- read_tsv("input/gtex_mapping.txt")
-# histology from OT
-histology_gtex <- read_tsv("input/histologies.tsv") %>% 
-  filter(grepl("GTEX",Kids_First_Biospecimen_ID),experimental_strategy=="RNA-Seq") %>%
-  left_join(mapping_KR,by=c("Kids_First_Biospecimen_ID"="sample_barcode"))
-# gtex processed samples manifest
 gtex_JL_processed <- read_tsv("input/GTEx_v8_Cerebellum_AdrenalGland.manifest - GTEx_v8_Cerebellum_AdrenalGland.manifest.tsv")
+
+# mapping TARGET from barcode to sample_id
+mapping_Apexa <- read_tsv("input/target_mapping.1.txt")
+mapping_AF <- read_tsv("input/target_mapping.2.txt")
+
+# mapping TCGA from barcode to sample_id
+mapping_tcga_KR <- read_tsv("input/tcga_mapping.txt")
+
+# get duplicated tcg
+duplicated_tcga <- read_tsv("input/tcga_duplicated.tsv")
+
 ```
 
-## Plot overlap of gtex barcodes
+
+## Subset histology from OT
 ```{r}
-x<-list(histologies=histology_gtex$Kids_First_Biospecimen_ID,mapping=mapping_KR$sample_barcode,GTEX_v8_Cerebellum_AdrenalGland=gtex_JL_processed$sample_id)
+histology_gtex <- read_tsv("input/histologies.tsv", guess_max = 10000) %>% 
+  filter(cohort=="GTEx",experimental_strategy=="RNA-Seq") %>%
+  left_join(mapping_KR,by=c("Kids_First_Biospecimen_ID"="sample_barcode")) 
 
-library("VennDiagram")
-grid.newpage()
-venn_object<-VennDiagram::venn.diagram(x,filename = NULL)
-grid.draw(venn_object)
+histology_target <- read_tsv("input/histologies.tsv", guess_max = 10000) %>% 
+  filter(cohort=="TARGET",experimental_strategy=="RNA-Seq") %>%
+  left_join(mapping_Apexa,by=c("Kids_First_Biospecimen_ID"="sample_barcode")) %>%
+  left_join(mapping_AF,by=c("Kids_First_Biospecimen_ID"="sample_barcode"))
+
+histology_tcga <- read_tsv("input/histologies.tsv", guess_max = 10000) %>% 
+  filter(cohort=="TCGA",experimental_strategy=="RNA-Seq") %>%
+  left_join(mapping_tcga_KR,by=c("Kids_First_Biospecimen_ID"="sample_barcode")) %>%
+  # remove the duplicated tcga ids
+  filter(!Kids_First_Biospecimen_ID %in% duplicated_tcga$Kids_First_Biospecimen_ID)
+
 ```
-7123 gtex barcode are in the collapsed rds file and histologies file.
 
 ## GTEx rename sample_ids in rds  file  to barcode
 ```{r}
 # get col index to rename  
-rename_cols_index <- which(colnames(read_expected_count) %in% histology_gtex$sample_id.y[!is.na(histology_gtex$sample_id.y)])
+rename_cols_index_gtex <- which(colnames(read_expected_count) %in% histology_gtex$sample_id.y[!is.na(histology_gtex$sample_id.y)])
 # get colnames for samples that don't match histology
-remove_cols <-setdiff(mapping_KR$sample_id,histology_gtex$sample_id.y)
+remove_cols_gtex <-setdiff(mapping_KR$sample_id,
+                           histology_gtex$sample_id.y)
 
 
 # get barcode to replace colnames  
-rename_cols_barcode <-unlist(lapply (
-  colnames(read_expected_count)[rename_cols_index] ,
+rename_cols_barcode_gtex <-unlist(lapply (
+  colnames(read_expected_count)[rename_cols_index_gtex] ,
   function(x) 
-    histology_gtex[grep(x, histology_gtex$sample_id.y),
-                   "Kids_First_Biospecimen_ID"] 
+    as.character(histology_gtex[grep(x, histology_gtex$sample_id.y),
+                                "Kids_First_Biospecimen_ID"])
   )
 )
 
+```
 
-# replace colnames
-read_expected_count <- read_expected_count %>%
-  select(-all_of(remove_cols)) %>%
-  rename_at(vars(rename_cols_index), ~rename_cols_barcode) 
+```{r}
+gtex <- list(histologies=histology_gtex$Kids_First_Biospecimen_ID,
+           mapping_KR=c(mapping_KR$sample_barcode),
+           RSEM = c(rename_cols_barcode_gtex,remove_cols_gtex))
 
-saveRDS(read_expected_count,"../../data/v5/gtex_target_tcga-gene-counts-rsem-expected_count-collapsed.rds")
-
+grid.newpage()
+venn_object<-VennDiagram::venn.diagram(gtex,filename = NULL)
+grid.draw(venn_object)
 
 ```
+7123 gtex barcode are in the collapsed rds file and histologies file.
+740 ids will be removed since they are not in histology file. 
+
+
+## TARGET rename sample_ids in rds  file  to barcode
+```{r}
+# get col index to rename  
+rename_cols_index_target <- which(colnames(read_expected_count) %in% histology_target$sample_id.y[!is.na(histology_target$sample_id.y)])
+# get colnames for samples that don't match histology
+remove_cols_target <-setdiff(c(mapping_Apexa$sample_id,mapping_AF$sample_id),
+                             histology_target$sample_id.y)
+
+
+# get barcode to replace colnames  
+rename_cols_barcode_target <-unlist(lapply (
+  colnames(read_expected_count)[rename_cols_index_target] ,
+  function(x) 
+    as.character(histology_target[grep(x, histology_target$sample_id.y),
+                   "Kids_First_Biospecimen_ID"])
+  )
+)
+
+```
+
+```{r}
+
+target <- list(histologies=histology_target$Kids_First_Biospecimen_ID,
+           mapping_Diskin_AF=c(mapping_Apexa$sample_barcode,mapping_AF$sample_barcode),
+           RSEM = c(remove_cols_target,rename_cols_barcode_target))
+
+grid.newpage()
+venn_object<-VennDiagram::venn.diagram(target,filename = NULL)
+grid.draw(venn_object)
+```
+
+419 target ids overlap the rds file and histology
+543 ids will be removed since they don't overlap the histology file
+
+## TCGA rename sample_ids in rds  file  to barcode
+```{r}
+# get col index to rename  
+rename_cols_index_tcga <- which(colnames(read_expected_count) %in% histology_tcga$sample_id.y[!is.na(histology_tcga$sample_id.y)])
+# get colnames for samples that don't match histology
+remove_cols_tcga <-setdiff(colnames(read_expected_count),
+                          histology_tcga$sample_id.y)
+
+
+# get barcode to replace colnames  
+rename_cols_barcode_tcga <-unlist(lapply (
+  colnames(read_expected_count)[rename_cols_index_tcga] ,
+  function(x) 
+    as.character(histology_tcga[grep(x, histology_tcga$sample_id.y),
+                   "Kids_First_Biospecimen_ID"])
+  )
+)
+
+```
+
+```{r}
+
+tcga <- list(histologies=histology_tcga$Kids_First_Biospecimen_ID,
+           mapping_KR=mapping_tcga_KR$sample_barcode,
+           RSEM= c(remove_cols_tcga,rename_cols_barcode_tcga))
+
+grid.newpage()
+venn_object<-VennDiagram::venn.diagram(tcga,filename = NULL)
+grid.draw(venn_object)
+```
+10358 tcga barcodes overlap histologies file and exist in RSEM rds file
+9533 will be removed
+
+
+## Replace colnames and remove if not in histologies file
+```{r}
+
+read_expected_count %>%
+  # rename gtex
+  rename_at(vars(rename_cols_index_gtex), ~rename_cols_barcode_gtex) %>%
+  # rename target
+  rename_at(vars(rename_cols_index_target), ~rename_cols_barcode_target) %>%
+  # rename target
+  rename_at(vars(rename_cols_index_tcga), ~rename_cols_barcode_tcga) %>%
+  # remove gtex barcode that don't overlap with histology file
+  select(-all_of(remove_cols_gtex)) %>%
+  # remove target barcode that don't overlap with histology file
+  select(-all_of(intersect(colnames(.),remove_cols_target))) %>%
+  # remove tcga barcode that don't overlap with histology file
+  select(-all_of(intersect(colnames(.),remove_cols_tcga))) %>%
+  saveRDS("../../data/v5/gtex_target_tcga-gene-counts-rsem-expected_count-collapsed.rds")
+
+```
+

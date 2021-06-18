@@ -1,0 +1,40 @@
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  pull_request:
+    branches: [ dev ]
+    paths: [ download-data.sh ]
+    types: [ closed ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  push_download-data.sh:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-18.04
+    steps:
+    # Checks out a copy of your repository on the ubuntu-latest machine
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+         # this will be the folder where current working repo will go
+         path: dev
+      - name: Checkout data-ingestion
+        uses: actions/checkout@v2
+        with:
+         repository: PediatricOpenTargets/data-ingestion
+         token: ${{ secrets.GitHub_PAT }} # `GitHub_PAT` is a secret that contains your Authentication Token
+         # this will be the folder where data-ingestion repo will go
+         path: data-ingestion
+      # Set up github to push download-data.sh to data-ingest
+      - name: setup git config
+        run: |
+          cd ./data-ingestion
+          git config user.name "@kgaonkar6's GitHub Actions Bot"
+          git config user.email "<>"    
+      - name: commit
+        run: |
+          cd ./data-ingestion
+      - uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_NAME: 'data-release'

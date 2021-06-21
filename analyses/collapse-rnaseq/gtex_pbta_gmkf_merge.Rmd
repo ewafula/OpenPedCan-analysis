@@ -1,0 +1,50 @@
+---
+title: "R Notebook to merge gtex with pbta_gmkf"
+output: html_notebook
+params:
+  gtex:
+    value: 'results/gtex-gene-expression-rsem-tpm-collapsed.rds'
+  pbta_gmkf:
+    value: 'results/pbta-gmkf-gene-expression-rsem-tpm-collapsed.rds'
+  output:
+    value: 'results/gene-expression-rsem-tpm-collapsed.rds'   
+---
+
+##Setup
+```{r}
+library("tidyverse")
+```
+
+## Input
+```{r}
+gtex <- readRDS(params$gtex)
+pbta_gmkf <- readRDS(params$pbta_gmkf)
+```
+
+
+## Idenitfy overlapping genes
+```{r}
+common_genes <- intersect(rownames(gtex),rownames(pbta_gmkf))
+length(common_genes)
+```
+36718 genes retained as common
+
+
+### Merge PBTA+GMKF with GTEx
+```{r}
+gene_merge <- cbind(gtex[common_genes,],pbta_gmkf[common_genes,])
+
+```
+
+### Dimension check
+```{r}
+dim(gene_merge)
+```
+36718 genes retained as common and 17382 (GTEx) 1244 (PBTA+GMKF)
+
+## Save
+```{r}
+gene_merge %>% saveRDS(params$output)
+
+```
+

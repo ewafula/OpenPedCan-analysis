@@ -22,9 +22,11 @@ jobs:
         with:
          source_file: 'download-data.sh'
          destination_repo: 'PediatricOpenTargets/data-ingestion'
+         # By default will be to push directly to main
+         # since the download-data.sh file will be reviewed in OpenPedCan-analysis repo already
          destination_branch: 'main'
-         # create a new branch by default it will push directly to main
-         destination_branch_create: 'test'
+         # uncomment to create a new branch with the download-data.sh added, 
+         # destination_branch_create: 'new-release'
          user_email: "<>" 
          user_name: 'Github Bot'
          commit_message: 'Add latest release of download script'  

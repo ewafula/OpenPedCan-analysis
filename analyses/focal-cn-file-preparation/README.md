@@ -7,19 +7,19 @@ The purpose of this module is to map from those ranges to gene identifiers for c
 
 ### Running this analysis
 *This analysis requires at least ~24 GB of RAM to run to completion*
+**Note**: The `run-bedtools.snakemake` script is implemented in `run-prepare-cn.sh` to run the bedtools coverage steps between the UCSC cytoband file and the samples in the copy number files produced in `02-add-ploidy-consensus.Rmd`.
+This script currently takes a while to run, and therefore slows down the processing speed of the main shell script `run-prepare-cn.sh` so for OpenPedCan data we will not be running the the scripts requiring the cytoband based status annotation.
 
 To run this analysis _only on consensus SEG file_, use the following (from the root directory of the repository):
 
 ```
-bash analyses/focal-cn-file-preparation/run-prepare-cn.sh
+bash analyses/focal-cn-file-preparation/run-prepare-cn-OpenTarget.sh
 ```
-**Note**: The `run-bedtools.snakemake` script is implemented in `run-prepare-cn.sh` to run the bedtools coverage steps between the UCSC cytoband file and the samples in the copy number files produced in `02-add-ploidy-consensus.Rmd`.
-This script currently takes a while to run, and therefore slows down the processing speed of the main shell script `run-prepare-cn.sh`.
 
 Running the following from the root directory of the repository will run the steps for the original copy number call files (CNVkit and ControlFreeC) in addition to the consensus SEG file:
 
 ```
-RUN_ORIGINAL=1 bash analyses/focal-cn-file-preparation/run-prepare-cn.sh
+RUN_ORIGINAL=1 bash analyses/focal-cn-file-preparation/run-prepare-cn-OpenTarget.sh
 ```
 
 ### Scripts and notebooks
@@ -33,7 +33,7 @@ RUN_ORIGINAL=1 bash analyses/focal-cn-file-preparation/run-prepare-cn.sh
 However, there are instances in the consensus SEG file where `copy.num` is `NA` which are removed.
 See the notebook for more information. This notebook also prepares lists of copy number bed files by sample for use in the implementation of bedtools coverage in `run-bedtools.snakemake`.
 
-* `03-add-cytoband-status-consensus.Rmd` - This notebook reads in the bedtools coverage output files and defines the dominant copy number status for each chromosome arm. The output of this notebook is a table with the following columns:
+* **Not applicable for OpenPedCan** `03-add-cytoband-status-consensus.Rmd` - This notebook reads in the bedtools coverage output files and defines the dominant copy number status for each chromosome arm. The output of this notebook is a table with the following columns:
 
   | `Kids_First_Biospecimen_ID` | chr | cytoband | dominant_status | band_length | callable_fraction | gain_fraction | loss_fraction | chromosome_arm |
   |----------------|--------|-------------|--------|---------|----------|-------------|---------|---------------|
@@ -47,7 +47,7 @@ See the notebook for more information. This notebook also prepares lists of copy
   |----------------|--------|-------------|--------|---------|-------------|---------|
   Any segment that is copy neutral is filtered out of this table. In addition, [any segments with copy number > (2 * ploidy) are marked as amplifications](https://github.com/AlexsLemonade/OpenPBTA-analysis/blob/e2058dd43d9b1dd41b609e0c3429c72f79ff3be6/analyses/focal-cn-file-preparation/03-prepare-cn-file.R#L275) in the `status` column.
 
-* `05-define-most-focal-cn-units.Rmd` - This notebook defines the _most focal_ recurrent copy number units by removing focal changes that are within entire chromosome arm losses and gains.
+* **Not applicable for OpenPedCan** `05-define-most-focal-cn-units.Rmd` - This notebook defines the _most focal_ recurrent copy number units by removing focal changes that are within entire chromosome arm losses and gains.
 _Most focal_ here meaning if a chromosome arm is not clearly defined as a gain or loss (and is callable) we look to define the cytoband level status.
 Similarly, if a cytoband is not clearly defined as a gain or loss (and is callable) we then look to define the gene level status.
 To make these calls, the following decisions around cutoffs were made:
@@ -56,7 +56,7 @@ To make these calls, the following decisions around cutoffs were made:
 	- The percentage of a region (arm, cytoband, or gene) that should be callable is more than 50%.
 	This decision was made because it seems reasonable to expect a region to be more than 50% callable for a 	dominant status call to be made.
 
-* `06-find-recurrent-calls.Rmd` - This notebook determines the recurrent focal copy number dominant status calls by region using the output of `05-define-most-focal-cn-units.Rmd`.
+* **Not applicable for OpenPedCan** `06-find-recurrent-calls.Rmd` - This notebook determines the recurrent focal copy number dominant status calls by region using the output of `05-define-most-focal-cn-units.Rmd`.
 Recurrence here has been arbitrarily defined based on the plotting of the distribution of status calls and a [similar decision](https://github.com/AlexsLemonade/OpenPBTA-analysis/blob/66bb67a7bf29aad4510a0913a2dbc88da0013be8/analyses/fusion_filtering/06-recurrent-fusions-per-histology.R#L152) made in `analyses/fusion_filtering/06-recurrent-fusions-per-histology.R` to make the cutoff for recurrence to be greater than a count of 3 samples that have the same CN status call in the same region.
 This notebook returns a `TSV` file with the recurrent copy number status calls, regions and biospecimen IDs.
 

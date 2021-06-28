@@ -100,7 +100,7 @@ ZscoredAnnotation<-function(standardFusionCalls=standardFusionCalls,zscoreFilter
   
   # filter the expression to only the ones that are in the cohort and sample type of interest
   matched_samples <- read.delim(clinicalFile, header = TRUE, sep = "\t", stringsAsFactors = FALSE) %>%
-    filter(cohort == "CBTN" | cohort == "PNOC" | cohort == "GMKF") %>%
+    filter(cohort == "PBTA" | cohort == "GMKF") %>%
     filter(experimental_strategy == "RNA-Seq") %>%
     filter(sample_type == "Tumor") %>%
     tibble::column_to_rownames("Kids_First_Biospecimen_ID")

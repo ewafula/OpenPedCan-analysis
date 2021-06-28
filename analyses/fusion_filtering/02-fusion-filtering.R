@@ -177,7 +177,7 @@ saveRDS(QCFiltered,paste0(opt$outputfile,"_QC_filtered.RDS"))
 expressionMatrix<-readRDS(expressionMatrix)
 # find the list of cohorts and sample type of interest
 matched_samples <- read.delim(clinicalFile, header = TRUE, sep = "\t", stringsAsFactors = FALSE) %>%
-  filter(cohort == "CBTN" | cohort == "PNOC" | cohort == "GMKF") %>%
+  filter(cohort == "PBTA" | cohort == "GMKF") %>%
   filter(experimental_strategy == "RNA-Seq") %>%
   filter(sample_type == "Tumor") %>%
   tibble::column_to_rownames("Kids_First_Biospecimen_ID")

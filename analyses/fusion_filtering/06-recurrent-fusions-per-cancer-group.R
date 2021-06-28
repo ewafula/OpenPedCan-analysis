@@ -36,7 +36,7 @@ standardFusionCalls <- read_tsv(standardFusionCalls) %>%
 clinical<-read_tsv(clinicalFile,col_types = readr::cols(molecular_subtype = readr::col_character()), guess_max = 100000) %>% 
   arrange(Kids_First_Biospecimen_ID,sample_id,tumor_descriptor,experimental_strategy,composition) %>%
   #select for only relevant cohort 
-  filter(cohort == "GMKF" | cohort == "PNOC" | cohort == "CBTN")
+  filter(cohort == "GMKF" | cohort == "PBTA")
 
 # gather RNA-seq from WGS/WXS/panel samples in independent-specimens.wgswxspanel.primary-plus.tsv
 independentSpecimens<-read_tsv(independentSpecimensFile) %>% 

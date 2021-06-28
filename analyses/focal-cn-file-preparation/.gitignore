@@ -7,3 +7,7 @@ gistic-results
 # ignore large files
 results/cnvkit_annotated_cn_autosomes.tsv.gz
 results/controlfreec_annotated_cn_autosomes.tsv.gz
+
+# corrsponding xy for the above large files
+results/cnvkit_annotated_cn_x_and_y.tsv.gz
+results/controlfreec_annotated_cn_x_and_y.tsv.gz

@@ -29,7 +29,7 @@ stopifnot(identical(
   as.integer(0)))
 
 fusion_df <- read_tsv(file.path(root_dir,
-  'analyses/fusion_filtering/results/pbta-fusion-putative-oncogenic.tsv'))
+  'analyses/fusion_filtering/results/fusion-putative-oncogenic.tsv'))
 # assert all records have Sample
 stopifnot(identical(sum(is.na(fusion_df$Sample)), as.integer(0)))
 

@@ -110,8 +110,8 @@ get_cg_cs_tbl <- function(histology_df) {
 # - overall_histology_df: the histology tibble that contains all samples. Must
 #   contain the following fields: Kids_First_Biospecimen_ID,
 #   Kids_First_Participant_ID, cancer_group, and cohort. This
-#   is used for computing the following columns: Total_mutations,
-#   Patients_in_dataset, Total_mutations_Over_Patients_in_dataset and
+#   is used for computing the following columns: Total_alterations,
+#   Patients_in_dataset, Total_alterations_Over_Patients_in_dataset and
 #   Frequency_in_overall_dataset.
 # - primary_histology_df: the histology tibble that contains primary tumor
 #   samples. Must contain the Kids_First_Biospecimen_ID field.
@@ -180,12 +180,12 @@ get_cg_ch_mut_freq_tbl <- function(alt_df, overall_histology_df,
   patient_var_df <- sample_var_df %>%
     left_join(bpid_ss_htl_df, by = 'Kids_First_Biospecimen_ID') %>%
     group_by(Alt_ID) %>%
-    summarise(Total_mutations = length(unique(Kids_First_Participant_ID))) %>%
+    summarise(Total_alterations = length(unique(Kids_First_Participant_ID))) %>%
     mutate(Patients_in_dataset = ss_n_patients) %>%
-    mutate(Total_mutations_Over_Patients_in_dataset =
-             paste(Total_mutations, Patients_in_dataset, sep = '/')) %>%
+    mutate(Total_alterations_Over_Patients_in_dataset =
+             paste(Total_alterations, Patients_in_dataset, sep = '/')) %>%
     mutate(Frequency_in_overall_dataset = num_to_pct_chr(
-      Total_mutations / Patients_in_dataset))
+      Total_alterations / Patients_in_dataset))
   
   # td = tumor descriptor
   td_var_df <- sample_var_df %>%
@@ -210,7 +210,7 @@ get_cg_ch_mut_freq_tbl <- function(alt_df, overall_histology_df,
   
   output_var_df <- patient_var_df %>%
     left_join(td_var_df, by = 'Alt_ID') %>%
-    arrange(desc(as.numeric(Total_mutations)))  %>%
+    arrange(desc(as.numeric(Total_alterations)))  %>%
     mutate(Disease = ss_cancer_group,
            Dataset = paste(ss_cohorts, collapse = '&')) %>%
     replace_na(list(
@@ -218,7 +218,7 @@ get_cg_ch_mut_freq_tbl <- function(alt_df, overall_histology_df,
       Frequency_in_overall_dataset = '',
       Total_primary_tumors_mutated_Over_Primary_tumors_in_dataset = '',
       Frequency_in_primary_tumors = '',
-      Total_relapse_tumors_mutated_Over_Relapse_tumors_in_dataset = '',
+      Total_relapse_tum60ors_mutated_Over_Relapse_tumors_in_dataset = '',
       Frequency_in_relapse_tumors = ''))
   
   return(output_var_df)

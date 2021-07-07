@@ -1,4 +1,4 @@
-Gene_Symbol	RMTL	Gene_Ensembl_ID	Gene_full_name	FusionName	Dataset	Disease	EFO	MONDO	Fusion_Type	Total_mutations_Over_Patients_in_dataset	Frequency_in_overall_dataset	Total_primary_tumors_mutated_Over_Primary_tumors_in_dataset	Frequency_in_primary_tumors	Total_relapse_tumors_mutated_Over_Relapse_tumors_in_dataset	Frequency_in_relapse_tumors
+Gene_Symbol	RMTL	Gene_Ensembl_ID	Gene_full_name	FusionName	Dataset	Disease	EFO	MONDO	Fusion_Type	Total_alterations_Over_Patients_in_dataset	Frequency_in_overall_dataset	Total_primary_tumors_mutated_Over_Primary_tumors_in_dataset	Frequency_in_primary_tumors	Total_relapse_tumors_mutated_Over_Relapse_tumors_in_dataset	Frequency_in_relapse_tumors
 LINC01019				LINC01019--LINC01019/IRX1	PBTA	Adamantinomatous Craniopharyngioma	EFO_1000069	MONDO_0002787	other	1/22	4.55%	0/18	0.00%	0/4	0.00%
 MYO3A				MYO3A--MYO3A	PBTA	Adamantinomatous Craniopharyngioma	EFO_1000069	MONDO_0002787	frameshift	1/22	4.55%	0/18	0.00%	0/4	0.00%
 FOCAD				FOCAD--MLLT3	PBTA	Adamantinomatous Craniopharyngioma	EFO_1000069	MONDO_0002787	other	1/22	4.55%	0/18	0.00%	0/4	0.00%

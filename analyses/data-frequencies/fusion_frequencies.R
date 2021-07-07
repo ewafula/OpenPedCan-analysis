@@ -13,7 +13,10 @@ data_dir <- file.path(root_dir, "data")
 module_dir <- file.path(root_dir, "analyses", "data-frequencies")
 results_dir <- file.path(module_dir, "results")
 
+# Source function
+source(file.path(module_dir,"utils","freq_counts.R"))
 
+# Create results folder if it doesn't exist
 if (!dir.exists(results_dir)) {
   dir.create(results_dir)
 }
@@ -156,6 +159,7 @@ cancer_group_cohort_summary_df <- get_cg_cs_tbl(td_htl_dfs$overall_htl_df)
 nf_cancer_group_cohort_summary_df <- cancer_group_cohort_summary_df %>%
   filter(n_samples >= 5)
 
+# Run get_cg_ch_mut_freq_tbl() per cancer_group and cohort
 fus_freq_tbl_list <- lapply(
   1:nrow(nf_cancer_group_cohort_summary_df),
   function(i) {
@@ -169,18 +173,25 @@ fus_freq_tbl_list <- lapply(
     stopifnot(identical(paste(c_cohorts, collapse = '&'), cgcs_row$cohort))
     message(paste(c_cancer_group, cgcs_row$cohort))
     
+    # Call function for each cohort and cancer_group
     res_df <- get_cg_ch_mut_freq_tbl(
       fusion_df, td_htl_dfs$overall_htl_df, td_htl_dfs$primary_htl_df,
-      td_htl_dfs$relapse_htl_df, c_cancer_group, c_cohorts)
+      td_htl_dfs$relapse_htl_df, c_cancer_group, c_cohorts) %>%
+      # if Alt_ID has no counts delete the row
+      filter(!is.na(Total_alterations))
     
+    if ( nrow(res_df) != 0 ){
+    # merge fusion dataframe with the counts and frequencies in each cancer_group
+    # - per cohort 
+    # - per primary samples in cohort
+    # - per relapse samples in cohort
     fusion_df <- fusion_df %>% 
       select(-Kids_First_Biospecimen_ID,-Kids_First_Participant_ID) %>%
       unique() %>%
-      left_join(res_df,by="Alt_ID") %>%
-      # if Disease is NA then no calls exists within this cancer_group
-      filter(!is.na(Disease))
+      inner_join(res_df,by="Alt_ID") 
     
     return(fusion_df)
+    }
   }
 )
 
@@ -263,7 +274,7 @@ m_fus_freq_tbl <- m_fus_freq_tbl %>%
   select(gene_symbol, RMTL, Gene_Ensembl_ID,
          Gene_full_name, FusionName,
          Dataset, Disease, EFO, MONDO, Fusion_Type,
-         Total_mutations_Over_Patients_in_dataset,
+         Total_alterations_Over_Patients_in_dataset,
          Frequency_in_overall_dataset,
          Total_primary_tumors_mutated_Over_Primary_tumors_in_dataset,
          Frequency_in_primary_tumors,

@@ -10,7 +10,7 @@ setwd(root_dir)
 
 # Set path to results, plots, and subset files directories
 data_dir <- file.path(root_dir, "data")
-module_dir <- file.path(root_dir, "analyses", "snv-frequencies")
+module_dir <- file.path(root_dir, "analyses", "data-frequencies")
 results_dir <- file.path(module_dir, "results")
 
 
@@ -29,7 +29,7 @@ stopifnot(identical(
   as.integer(0)))
 
 fusion_df <- read_tsv(file.path(root_dir,
-  'analyses/fusion_filtering/results/fusion-putative-oncogenic.tsv'))
+  'analyses/fusion_filtering/results/pbta-fusion-putative-oncogenic.tsv'))
 # assert all records have Sample
 stopifnot(identical(sum(is.na(fusion_df$Sample)), as.integer(0)))
 
@@ -221,11 +221,12 @@ ann_ensg_hugo_rmtl_df <- ensg_hugo_rmtl_df %>%
   filter(!is.na(rmtl), !is.na(version)) %>%
   mutate(RMTL = paste0(rmtl, ' (', version, ')')) %>%
   select(ensg_id, RMTL,gene_symbol) %>%
-  rename(Gene_Ensembl_ID = ensg_id)
+  rename(Gene_Ensembl_ID = ensg_id) 
 
 m_fus_freq_tbl <- m_fus_freq_tbl %>%
   left_join(ann_ensg_hugo_rmtl_df, by = "gene_symbol") %>%
-  replace_na(list(RMTL = ''))
+  replace_na(list(RMTL = '',
+                  Gene_Ensembl_ID = ''))
 stopifnot(identical(sum(is.na(m_fus_freq_tbl)), as.integer(0)))
 
 

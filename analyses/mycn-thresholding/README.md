@@ -15,7 +15,7 @@ The purpose of this analysis module is to access the status of the MYCN gene amp
 
   `../../data/histologies.tsv`
 
- **Consensus CNV file**
+- **Consensus CNV file**
 
   `../../data/consensus_wgs_plus_cnvkit_wxs.tsv.gz`
 

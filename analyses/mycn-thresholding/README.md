@@ -12,15 +12,15 @@ The purpose of this analysis module is to access the status of the MYCN gene amp
 
 ## Input files
 **Histologies file**
-- `../../data/histologies.tsv`
+`../../data/histologies.tsv`
 **Consensus CNV file**
-- `../../data/consensus_wgs_plus_cnvkit_wxs.tsv.gz`
+`../../data/consensus_wgs_plus_cnvkit_wxs.tsv.gz`
 **CNVkit SEG file**
-- `../../data/cnv-cnvkit.seg.gz`
+`../../data/cnv-cnvkit.seg.gz`
 **Control-FREEC CNV file**
-- `../../data/cnv-controlfreec.tsv.gz`
+`../../data/cnv-controlfreec.tsv.gz`
 **MantaSV SV file**
- - `../../data/sv-manta.tsv.gz`
+ `../../data/sv-manta.tsv.gz`
 
 
 ## Analysis scripts
@@ -80,17 +80,17 @@ Rscript -e "rmarkdown::render('02-mycn-cnv-clinical-non-matching.Rmd', clean = T
 ## Results
 
 **Summary table Neuroblastoma TARGET and GMKF samples for both consensus CNV and clinical MYCN amplification status**
-- `results/mycn_cnv_vs_clinical_status.tsv`
+`results/mycn_cnv_vs_clinical_status.tsv`
 **Neuroblastoma TARGET and GMKF samples with discordant MYCN amplification status between the consensus CNV calls and the clinical information, including percentage overlap coverage  between the variant callers**
-- `results/mycn_cnv_vs_clinical_status.tsv`
+`results/mycn_cnv_vs_clinical_status.tsv`
 **Copy number classification metrics of MYCN gene amplification status, including true/false positives, true/false negative, accuracy, true negative rate (sensitivity), false postive rate (specificity), and the sum of true negative and false postive rates**
-- `results/mycn_cnv_vs_clinical_status_classification_metrics.tsv`
+`results/mycn_cnv_vs_clinical_status_classification_metrics.tsv`
 **CNVkit analysis MYCN cytogenic region (`2p24.3`) base alignment genomic segments**
-- `results/cnvkit_mycn_cnv_vs_clinical_diff_status.tsv`
+`results/cnvkit_mycn_cnv_vs_clinical_diff_status.tsv`
 **Control-FREEC analysis MYCN cytogenic region (`2p24.3`) base alignment genomic segments**
-- `results/ccontrolfreec_mycn_cnv_vs_clinical_diff_status.tsv`
+`results/ccontrolfreec_mycn_cnv_vs_clinical_diff_status.tsv`
 **MantaSV analysis MYCN cytogenic region (`2p24.3`) base alignment genomic segments** 
-- `results/mantaSV_mycn_cnv_vs_clinical_diff_status.tsv`
+`results/mantaSV_mycn_cnv_vs_clinical_diff_status.tsv`
 **CNVkit analysisc copy number notebook plots for the MYCN cytogenic region (`2p24.3`)** 
-- `02-mycn-cnv-clinical-discordant.html`
+`02-mycn-cnv-clinical-discordant.html`
 

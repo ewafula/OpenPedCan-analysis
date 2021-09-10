@@ -1,0 +1,171 @@
+---
+title: "CNVkit amplification status plots for the MYCN region 2p24.3"
+output:
+  html_document:
+    toc: yes
+    df_print: paged
+  html_notebook:
+    toc: yes
+    toc_float: yes
+---
+
+Assessing MYCN region 2p24.3 for samples with amplification status that is discordant between the consensus CNV calls and the clinical information in the histologies file using the CNVkit analysis SEG tabular output. Out of the 24 discordant samples in the OpenPedCan v8 data release, 11 samples with MYCN region 2p24.3 are present in the CNVkit analysis.
+
+The analysis code is adapted from the [`molecular-subtyping-embryonal module of OpenPBTA`](https://github.com/AlexsLemonade/OpenPBTA-analysis/tree/master/analyses/molecular-subtyping-embryonal).
+
+### Load libraries
+
+```{r message=FALSE, warning=FALSE}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(ggbio))
+```
+
+### Ploting functions
+
+```{r message=FALSE, warning=FALSE}
+plot_chr2 <- function(cn_df, biospecimen_id) {
+ # This function takes a seg data.frame and a biospecimen identifier and 
+ # returns a plot of the chromosome 19 segment mean for that biospecimen.
+ # It fills missing seg.mean values with zeroes.
+ # 
+ # Args:
+ #   cn_df: data.frame in SEG format
+ #   biospecimen_id: A Kids First Biospecimen ID used to filter cn_df
+ # 
+ # Returns: essentially a barplot of the non-neutral segment means
+  
+  bsid_data <- cn_df %>%  
+    # For visualization purposes fill the missing seg.mean values with zeroes
+    tidyr::replace_na(list(seg.mean = 0)) %>%
+    # Reformat the chromosome variable to drop the "chr"
+    dplyr::mutate(chrom = factor(gsub("chr", "", chrom), 
+                                 levels = c(1:22, "X", "Y"))) %>%
+    # Only look at chr19 in the relevant sample
+    filter(ID == biospecimen_id,
+           chrom == 2) %>%
+    # Make Del/Amp variable
+    dplyr::mutate(Type = dplyr::case_when(
+      seg.mean < 0 ~ "Del",
+      seg.mean > 0 ~ "Amp",
+      seg.mean == 0 ~ "Neutral"
+    ))
+  
+  # Turn into a GRanges for easier mapping
+  bsid_ranges <- GenomicRanges::GRanges(
+    seqnames = bsid_data$chrom,
+    ranges = IRanges::IRanges(
+      start = bsid_data$loc.start,
+      end = bsid_data$loc.end
+    ),
+    score = bsid_data$seg.mean,
+    mcols = bsid_data$Type
+  )
+  
+  # Map this on a plot
+  bsid_plot <- 
+    ggbio::autoplot(bsid_ranges,
+                    ggplot2::aes(y = score, fill = mcols),
+                    geom = "bar") +
+    ggplot2::theme_bw() +
+    ggplot2::ylim(c(-2, 2)) +
+    colorblindr::scale_fill_OkabeIto(name = "Type") +
+    ggplot2::labs(
+      title = paste(biospecimen_id, "chr2"),
+      y = "segment mean"
+    )
+  
+  return(bsid_plot)
+}
+```
+
+### Read in files
+
+```{r message=FALSE, warning=FALSE}
+# Load samples with MYCN amplification status that does not match between the OpenPedCan consensus CNV calls and the clinical information
+mycn_diff_df <- read_tsv("results/mycn_cnv_vs_clinical_diff_status.tsv")
+
+# MYCN region 2p24.3 for samples with amplification status that does not match between the OpenPedCan consensus CNV calls and the clinical information
+cnvkit_mycn_diff_df <- read_tsv("results/cnvkit_mycn_cnv_vs_clinical_diff_status.tsv")
+```
+
+List samples that differ in MYCN amplification status between consensus CNV calls and clinical information 
+```{r message=FALSE, warning=FALSE}
+knitr::kable(mycn_diff_df[, 1:6], "simple")
+```
+
+### Look at copy number alterations on chr2, the MYCN region 2p24.3
+
+GRCh37/hg19 build captures more samples than GRCh38/hg38 build. Likely CNVs were called on GRCh37/hg19.
+
+```
+### From UCSC Genome Brower, these are positions corresponding to 2p24.3 (MYCN region)
+GRCh37/hg19 - Cytogenic location: 2p24.3
+chr2:12,200,001-16,700,000
+MYCN: chr2:16080686-1608712
+```
+
+```{r message=FALSE, warning=FALSE}
+hg19_cn_df <- cnvkit_mycn_diff_df %>% 
+  filter(seg.mean > 0)
+knitr::kable(hg19_cn_df[, 1:8], "simple")
+``` 
+
+### Visualization
+
+For visualization purposes, filling in the missing `seg.mean in CNBkit analysis results values with zeroes.
+
+```{r message=FALSE, warning=FALSE}
+plot_chr2(cn_df = cnvkit_mycn_diff_df,
+           biospecimen_id = "BS_6K2SSJ77")
+```
+
+
+```{r message=FALSE, warning=FALSE}
+plot_chr2(cn_df = cnvkit_mycn_diff_df,
+           biospecimen_id = "BS_8XDZQKSD")
+```
+
+```{r message=FALSE, warning=FALSE}
+plot_chr2(cn_df = cnvkit_mycn_diff_df,
+           biospecimen_id = "BS_ACCE0MEA")
+```
+
+```{r message=FALSE, warning=FALSE}
+plot_chr2(cn_df = cnvkit_mycn_diff_df,
+           biospecimen_id = "BS_E4V8XN3G")
+```
+
+```{r message=FALSE, warning=FALSE}
+plot_chr2(cn_df = cnvkit_mycn_diff_df,
+           biospecimen_id = "BS_QDRHQSPZ")
+```
+
+```{r message=FALSE, warning=FALSE}
+plot_chr2(cn_df = cnvkit_mycn_diff_df,
+           biospecimen_id = "BS_FJP95JXF")
+```
+
+```{r message=FALSE, warning=FALSE}
+plot_chr2(cn_df = cnvkit_mycn_diff_df,
+           biospecimen_id = "BS_WMM0MP1J")
+```
+
+```{r message=FALSE, warning=FALSE}
+plot_chr2(cn_df = cnvkit_mycn_diff_df,
+           biospecimen_id = "BS_ZED6T1CT")
+```
+
+```{r message=FALSE, warning=FALSE}
+plot_chr2(cn_df = cnvkit_mycn_diff_df,
+           biospecimen_id = "TARGET-30-PAMDAL-01A-01W")
+```
+
+```{r message=FALSE, warning=FALSE}
+plot_chr2(cn_df = cnvkit_mycn_diff_df,
+           biospecimen_id = "TARGET-30-PASKFV-01A-01D")
+```
+
+```{r message=FALSE, warning=FALSE}
+plot_chr2(cn_df = cnvkit_mycn_diff_df,
+           biospecimen_id = "TARGET-30-PASXRG-01A-01D")
+```

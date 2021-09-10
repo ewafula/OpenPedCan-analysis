@@ -7,7 +7,7 @@ The purpose of this analysis module is to access the status of the MYCN gene amp
 2. Extracts segments in the MYCN cytogenic region (`2p24.3`) reported in the `CNVkit`, `Control-FREEC`, and `MantaSV` variant callers analysis results.
 3. Computes copy number classification metrics using the clinical information in the v8 histologies file as the ground truth compared to the inferred consensus CNV calls.
 4. Estimates overlap coverage between variant callers for samples that are discordant in MYCN amplification status between consensus CNV calls and clinical information.
-5. Plots chromosome 2 segment mean for the MYCN cytogenic region (`2p24.3`) reported in the CNVkit analysis results for discordant samples to illustrate the MYCN copy number status (`deletion`, `amplification`, or `neutral`). 
+5. Plots chromosome 2 segment mean for the MYCN cytogenic region (`2p24.3`) reported in the CNVkit analysis results for discordant samples to illustrate the MYCN copy number status (`deletion`, `amplification`, or `neutral`). Adapted from the AlexsLemonade/OpenPBTA-analysis [molecular-subtyping-embryonal module](https://github.com/AlexsLemonade/OpenPBTA-analysis/blob/master/analyses/molecular-subtyping-embryonal/03-clean-c19mc-data.Rmd). 
 
 
 ## Input files

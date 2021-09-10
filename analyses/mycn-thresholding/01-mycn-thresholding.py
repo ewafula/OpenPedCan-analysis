@@ -162,7 +162,7 @@ def compute_caller_overlaps(cnvkit_mycn_df, controlfreec_mycn_df, mantaSV_mycn_d
 
 def summarize_bedtools_caller_overlaps(caller1_bed_file, caller2_bed_file):
     """
-    Summarize base coverage overlaps in the MYCN cyogenetic region bewteen callers
+    Summarize base coverage overlaps in the MYCN cyogenetic region bewteen callers by selecting the larget bidirectional for the mean coverage of segments within the MYCN cytogenic region. 
     Parameter: Caller bed files for discordant segments between the consesus calls and clinical data
     Returns: a Pandas dataframe of with summarized bedtools caller coverage overlaps
     """

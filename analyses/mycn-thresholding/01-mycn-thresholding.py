@@ -21,8 +21,8 @@ import subprocess
 import numpy as np
 import pandas as pd
 from collections import OrderedDict
+from sklearn.metrics import roc_auc_score
 from sklearn.metrics import confusion_matrix
-
 
 def read_parameters():
      p = argparse.ArgumentParser(description=("The 01-mycn-thresholding.py script creates summary results to enable consensus copy number variation (CNV) thresholding assessment for Neuroblastoma MYCN gene."), formatter_class=argparse.RawTextHelpFormatter)
@@ -71,7 +71,7 @@ def compute_classification_metrics(cnv_df):
     """
     Compute confusion matrix to evaluate the accuracy of CNV calls for MYCN amplification status. CNV MYCN status is classified relative to the clinical MYCN status to determine a suitable copy number cutoff for calling a MYCN gene in a sample as either amplified or not amplified.
     Parameter: a Pandas dataframe with Neuroblastoma samples and their associated MYCN gene status 
-    Returns: a Pandas dataframe with classification metrics, including accuracy, sensitivity (TPR), and specificity (TNR) to determine a suitable cutoff for copy number MYCN amplification
+    Returns: a Pandas dataframe with classification metrics, including accuracy, sensitivity (TPR), specificity (TNR), and ROC AUC score to determine a suitable cutoff for copy number MYCN amplification
     """
     metrics_dfs = []
     copy_number_cutoff = [x for x in range(int(cnv_df.copy_number.min()) + 1, 16)]
@@ -90,15 +90,17 @@ def compute_classification_metrics(cnv_df):
         TPR = round(TP / (TP + FN), 6)
         Accuracy = round((TP + TN)/(TN + FN + TP + FP), 6)
         TNRTPR = round((TNR + TPR), 6)
+        ROCAUC = roc_auc_score((list(cnv_df.clinical_status), list(cnv_df.cnv_status)), 6)
         data = OrderedDict()
         data["Copy_number"] = cutoff
-        data ["TNs"] = TN
-        data ["FNs"] = FN
-        data ["TPs"] = TP
-        data ["TNR"] = TNR
-        data ["TPR"] = TPR
-        data ["Accuracy"] = Accuracy
-        data ["TNR + TPR"] = TNRTPR
+        data["TNs"] = TN
+        data["FNs"] = FN
+        data["TPs"] = TP
+        data["TNR"] = TNR
+        data["TPR"] = TPR
+        data["Accuracy"] = Accuracy
+        data["TNR + TPR"] = TNRTPR
+        data["ROCAUC"] = ROCAUC
         df = pd.DataFrame(data, index=[copy_number_cutoff.index(cutoff)])
         metrics_dfs.append(df)
     metrics_df = pd.concat(metrics_dfs)

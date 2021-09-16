@@ -96,7 +96,7 @@ Rscript -e "rmarkdown::render('02-mycn-cnv-clinical-non-matching.Rmd', clean = T
 
   `results/mycn_cnv_vs_clinical_status.tsv`
 
-- **Copy number classification metrics of MYCN gene amplification status, including true/false positives, true/false negative, accuracy, true negative rate (sensitivity), false postive rate (specificity), and the sum of true negative and false postive rates**
+- **Copy number classification metrics of MYCN gene amplification status, including true/false positives, true/false negative, accuracy, true negative rate (sensitivity), false postive rate (specificity), the sum of true negative and false postive rates, and ROC AUC score**
 
   `results/mycn_cnv_vs_clinical_status_classification_metrics.tsv`
 

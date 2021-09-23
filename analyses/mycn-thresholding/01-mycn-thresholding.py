@@ -90,7 +90,7 @@ def compute_classification_metrics(cnv_df):
         TPR = round(TP / (TP + FN), 6)
         Accuracy = round((TP + TN)/(TN + FN + TP + FP), 6)
         TNRTPR = round((TNR + TPR), 6)
-        ROCAUC = roc_auc_score((list(cnv_df.clinical_status), list(cnv_df.cnv_status)), 6)
+        ROCAUC = round(roc_auc_score(list(cnv_df.clinical_status), list(cnv_df.cnv_status)), 6)
         data = OrderedDict()
         data["Copy_number"] = cutoff
         data["TNs"] = TN

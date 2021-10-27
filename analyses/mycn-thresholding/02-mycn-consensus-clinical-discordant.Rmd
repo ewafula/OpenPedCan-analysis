@@ -82,10 +82,10 @@ plot_chr2 <- function(cn_df, biospecimen_id) {
 
 ```{r message=FALSE, warning=FALSE}
 # Load samples with MYCN amplification status that does not match between the OpenPedCan consensus CNV calls and the clinical information
-mycn_diff_df <- read_tsv("results/mycn_cnv_vs_clinical_diff_status.tsv")
+mycn_diff_df <- read_tsv("results/mycn_consensus_vs_clinical_diff_status.tsv")
 
 # MYCN region 2p24.3 for samples with amplification status that does not match between the OpenPedCan consensus CNV calls and the clinical information
-cnvkit_mycn_diff_df <- read_tsv("results/cnvkit_mycn_cnv_vs_clinical_diff_status.tsv")
+cnvkit_mycn_diff_df <- read_tsv("results/cnvkit_mycn_consensus_vs_clinical_diff_status.tsv")
 ```
 
 List samples that differ in MYCN amplification status between consensus CNV calls and clinical information 

@@ -37,21 +37,40 @@ controlfreec_file=../../data/cnv-controlfreec.tsv.gz
 # MantaSV SV file path
 mantasv_file=../../data/sv-manta.tsv.gz
 
+# MYCN focal SNParray file
+mycn_focal=input/mycn_tumor_focal_SNParray.tsv
+
+# MYCN paired segment SNParray file
+mycn_paired_segment=input/mycn_tumor_paired_segment_SNParray.tsv
+
+# MYCN single segment SNParray file
+mycn_single_segment=input/mycn_tumor_single_segment_SNParray.tsv
+
 # Run the first script in this module that identifies discordant samples between
 # consensus CNV call and clinical data, identifies MYCN cytogenetic regions in
 # CNVkit, Control-FREEC, and MantaSV analysis results, and computes classification
 # metrics and overlap coverage between callers for discordant samples for determining
 # the threshold for MYCN amplification status in the consensus CNV analysis.
-echo 'Run 01-mycn-thresholding.py...'
-python3 01-mycn-thresholding.py $histology_file $cnv_file $cnvkit_file $controlfreec_file $mantasv_file
+echo 'Run 01-mycn-consensus-thresholding.py...'
+python3 01-mycn-consensus-thresholding.py $histology_file $cnv_file $cnvkit_file $controlfreec_file $mantasv_file
 
-echo 'Done 01-mycn-thresholding.py...'
+echo 'Done 01-mycn-consensus-thresholding.py...'
 
-echo 'Run 02-mycn-cnv-clinical-discordant.Rmd...'
+echo 'Run 02-mycn-consensus-clinical-discordant.Rmd...'
 # Run notebook that plots chromosome 2 segment mean from CNVkit anaysis
 # for the MYCN cytogenetic region to illustrate the MYCN CNV status
 # samples with discordance bewteen consensus call and clinical data
-Rscript -e "rmarkdown::render('02-mycn-cnv-clinical-discordant.Rmd', clean = TRUE)"
+Rscript -e "rmarkdown::render('02-mycn-consensus-clinical-discordant.Rmd', clean = TRUE)"
 
-echo 'Done 02-mycn-cnv-clinical-discordant.Rmd...'
+echo 'Done 02-mycn-consensus-clinical-discordant.Rmd...'
+
+# Run the third script in this module that computes classification metrics at mutiple copy number 
+# ratio cutoffs between focal/paired segment/single segment SNParray calls and the clinical MYCN 
+# amplification status in OpenPedCan histologies file to aid in determining a suitable threshold 
+# for MYCN amplification calls
+echo 'Run 03-mycn-SNParray-thresholding.py...'
+python3 03-mycn-SNParray-thresholding.py $mycn_focal $mycn_paired_segment $mycn_single_segment $histology_file
+
+echo 'Done 03-mycn-SNParray-thresholding.py...'
+
 

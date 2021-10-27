@@ -245,10 +245,10 @@ suppressPackageStartupMessages(library(ggbio))</code></pre>
 <div id="read-in-files" class="section level3">
 <h3>Read in files</h3>
 <pre class="r"><code># Load samples with MYCN amplification status that does not match between the OpenPedCan consensus CNV calls and the clinical information
-mycn_diff_df &lt;- read_tsv(&quot;results/mycn_cnv_vs_clinical_diff_status.tsv&quot;)
+mycn_diff_df &lt;- read_tsv(&quot;results/mycn_consensus_vs_clinical_diff_status.tsv&quot;)
 
 # MYCN region 2p24.3 for samples with amplification status that does not match between the OpenPedCan consensus CNV calls and the clinical information
-cnvkit_mycn_diff_df &lt;- read_tsv(&quot;results/cnvkit_mycn_cnv_vs_clinical_diff_status.tsv&quot;)</code></pre>
+cnvkit_mycn_diff_df &lt;- read_tsv(&quot;results/cnvkit_mycn_consensus_vs_clinical_diff_status.tsv&quot;)</code></pre>
 <p>List samples that differ in MYCN amplification status between consensus CNV calls and clinical information</p>
 <pre class="r"><code>knitr::kable(mycn_diff_df[, 1:6], &quot;simple&quot;)</code></pre>
 <table>

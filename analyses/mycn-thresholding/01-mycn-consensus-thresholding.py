@@ -2,9 +2,9 @@
 
 
 """
-01-mycn-thresholding.py
+01-mycn-consensus-thresholding.py
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Functions to assess Neuroblastoma MYCN gene consensus copy number variation (CNV) thresholding for GMFK and TARGET cohorts for OPenPedCan analyses modules 
+Functions to assess Neuroblastoma MYCN gene consensus copy number variation (CNV) GMFK and TARGET cohorts thresholding for OPenPedCan analyses modules 
 """
 
 
@@ -25,13 +25,13 @@ from sklearn.metrics import roc_auc_score
 from sklearn.metrics import confusion_matrix
 
 def read_parameters():
-     p = argparse.ArgumentParser(description=("The 01-mycn-thresholding.py script creates summary results to enable consensus copy number variation (CNV) thresholding assessment for Neuroblastoma MYCN gene."), formatter_class=argparse.RawTextHelpFormatter)
+     p = argparse.ArgumentParser(description=("The 01-mycn-consensus-thresholding.py script creates summary results to enable consensus copy number variation (CNV) thresholding assessment for Neuroblastoma MYCN gene."), formatter_class=argparse.RawTextHelpFormatter)
      p.add_argument('HISTOLOGY_FILE', type=str, default=None, help="OPenPedCan histology file (histologies.tsv)\n\n")
      p.add_argument('CONSENSUS_CNV_FILE', type=str, default=None, help="OPenPedCan consensus CNV file (consensus_wgs_plus_cnvkit_wxs.tsv.gz)\n\n")
      p.add_argument('CNVKIT_CNV_FILE', type=str, default=None, help="OPenPedCan CNVKit CNV file (cnv-cnvkit.seg.gz)\n\n")
      p.add_argument('CONTROLFREEC_CNV_FILE', type=str, default=None, help="OPenPedCan Control-FREEC CNV file (cnv-controlfreec.tsv.gz)\n\n")
      p.add_argument('MANTASV_SV_FILE', type=str, default=None, help="OPenPedCan mantaSV SV file (sv-manta.tsv.gz)\n\n")
-     p.add_argument('-v', '--version', action='version', version="01-mycn-thresholding.py version {} ({})".format(__version__, __date__), help="Print the current 01-mycn-thresholding.py version and exit\n\n")
+     p.add_argument('-v', '--version', action='version', version="01-mycn-consensus-thresholding.py version {} ({})".format(__version__, __date__), help="Print the current 01-mycn-consensus-thresholding.py version and exit\n\n")
      return p.parse_args()
 
 
@@ -201,12 +201,12 @@ def main():
     cnv_diffs_overlaps_df = compute_caller_overlaps(cnvkit_mycn_df, controlfreec_mycn_df, mantaSV_mycn_df, cnv_diffs_df)
 
     # write summary files
-    cnv_df.to_csv("results/mycn_cnv_vs_clinical_status.tsv", sep="\t", index=False, encoding="utf-8")
-    metrics_df.to_csv("results/mycn_cnv_vs_clinical_status_classification_metrics.tsv", sep="\t", index=False, encoding="utf-8")
-    cnvkit_mycn_df.to_csv("results/cnvkit_mycn_cnv_vs_clinical_diff_status.tsv", sep="\t", index=False, encoding="utf-8")
-    controlfreec_mycn_df.to_csv("results/controlfreec_mycn_cnv_vs_clinical_diff_status.tsv", sep="\t", index=False, encoding="utf-8")
-    mantaSV_mycn_df.to_csv("results/mantaSV_mycn_cnv_vs_clinical_diff_status.tsv", sep="\t", index=False, encoding="utf-8")
-    cnv_diffs_overlaps_df.to_csv("results/mycn_cnv_vs_clinical_diff_status.tsv", sep="\t", index=False, encoding="utf-8")
+    cnv_df.to_csv("results/mycn_consensus_vs_clinical_status.tsv", sep="\t", index=False, encoding="utf-8")
+    metrics_df.to_csv("results/mycn_consensus_vs_clinical_metrics.tsv", sep="\t", index=False, encoding="utf-8")
+    cnvkit_mycn_df.to_csv("results/cnvkit_mycn_consensus_vs_clinical_diff_status.tsv", sep="\t", index=False, encoding="utf-8")
+    controlfreec_mycn_df.to_csv("results/controlfreec_mycn_consensus_vs_clinical_diff_status.tsv", sep="\t", index=False, encoding="utf-8")
+    mantaSV_mycn_df.to_csv("results/mantaSV_mycn_consensus_vs_clinical_diff_status.tsv", sep="\t", index=False, encoding="utf-8")
+    cnv_diffs_overlaps_df.to_csv("results/mycn_consensus_vs_clinical_diff_status.tsv", sep="\t", index=False, encoding="utf-8")
 
     # remove temporary bed files
     results_files = os.listdir("results")

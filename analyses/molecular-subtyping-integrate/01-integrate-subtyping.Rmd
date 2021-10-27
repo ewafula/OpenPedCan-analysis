@@ -9,9 +9,9 @@ date: 2020
 ---
 
 The purpose of this notebook is to integrate molecular subtyping results from 
-[molecular-subtyping-pathology](https://github.com/AlexsLemonade/OpenPBTA-analysis/tree/master/analyses/molecular-subtyping-pathology) with `pbta-histologies-base.tsv`.
+[molecular-subtyping-pathology](https://github.com/AlexsLemonade/OpenPBTA-analysis/tree/master/analyses/molecular-subtyping-pathology) with `histologies-base.tsv`.
 
-Here we will use `pbta-histologies-base.tsv` in which integrated_diagnosis,Notes and molecular_subtype are all NA. Through all the following molecular subtyping modules:
+Here we will use `histologies-base.tsv` in which integrated_diagnosis,Notes and molecular_subtype are all NA. Through all the following molecular subtyping modules:
 
 - molecular-subtyping-MB
 - molecular-subtyping-CRANIO
@@ -26,7 +26,7 @@ Here we will use `pbta-histologies-base.tsv` in which integrated_diagnosis,Notes
 
 We gathered and updated molecular-subtype AND integrated_diagnosis AND broad_histology AND short_histology for these histologies.
 
-In this notebook we will add the molecular subtyping information compiled and updated by pathology review in `molecular-subtyping-pathology/compiled_molecular_subtypes_with_clinical_pathology_feedback.tsv` to create the `pbta-histologies.tsv` for the same release. If samples are not processed by a molecular-subtyping-* module then the br
+In this notebook we will add the molecular subtyping information compiled and updated by pathology review in `molecular-subtyping-pathology/compiled_molecular_subtypes_with_clinical_pathology_feedback.tsv` to create the `histologies.tsv` for the same release. If samples are not processed by a molecular-subtyping-* module then the br
 
 In adddition, for samples that where pathology_diagnosis is "Other" we also update the file broad_histology and short_histology from a manual review of WHO terms.
 
@@ -39,11 +39,12 @@ library(tidyverse)
 data_dir <- "../../data/"
 
 
-base_histology <- read_tsv(file.path(data_dir,"pbta-histologies-base.tsv"),
+base_histology <- read_tsv(file.path(data_dir,"histologies-base.tsv"),
                            col_types = readr::cols(molecular_subtype = readr::col_character(),
                                                    short_histology = readr::col_character(),
                            broad_histology = readr::col_character(),
-                           Notes = readr::col_character())) %>%
+                           Notes = readr::col_character()), 
+                           guess_max=100000) %>%
   unique()
 ```
 
@@ -61,7 +62,7 @@ Update "Other" sample broad/short histology and harmonized_diagnosis and add to 
 
 ```{r}
 
-Other_subtypes <- read_tsv(file.path("input","pathology_dx and pathology_free_text_diagnosis to broad_histology for subtyping module - rules_without_subtype_WIP.tsv"))
+Other_subtypes <- read_tsv(file.path("input","pathology_dx\ and\ pathology_free_text_diagnosis\ to\ broad_histology\ for\ subtyping\ module\ -\ other_diagnosis_rules.tsv"))
 
 compiled_subtyping_other <- base_histology %>%
   select(
@@ -164,6 +165,38 @@ No NAs in broad_histology, short_histology or harmonized_diagnosis
 Just a note, integrated_diagnosis is expected to be `NA` for samples where subtyping is not performed or if molecular_subtype is "XYZ,To be classified". 
 This means no evidence was provided/available for these samples so we are not able to add integrated_diagnosis.
 
+### Adding cancer_group
+
+Provides a narrower grouping for samples that can be used in generating figures
+```{r}
+
+histology<- histology %>%
+  # remove subtype details
+  dplyr::mutate(cancer_group = str_extract(harmonized_diagnosis, "[^,]*")) %>%
+  
+  # update some values that come from pathology_diagnosis which are not standardized yet
+  dplyr::mutate(cancer_group = case_when(
+    cancer_group == "Brainstem glioma- Diffuse intrinsic pontine glioma" ~ "Diffuse intrinsic pontine glioma",
+    cancer_group == "Anaplastic (malignant) meningioma" ~ "Meningioma",
+    cancer_group == "Atypical meningioma" ~ "Meningioma",
+    cancer_group == "Neurofibroma/Plexiform;Other" ~ "Neurofibroma/Plexiform",
+    cancer_group == "Non-germinomatous germ cell tumor;Teratoma" ~ "Teratoma",
+    cancer_group %in% c("Meningothelial meningioma", "Clear cell meningioma") ~ "Meningioma",
+    cancer_group == "Embryonal Tumor with Multilayered Rosettes" ~ "Embryonal tumor with multilayer rosettes",
+    cancer_group == "Adamantinomatous craniopharyngioma" ~ "Craniopharyngioma",
+    sample_id == "7316-2577" ~ "Embryonal tumor with multilayer rosettes",
+    cancer_group %in% c("Benign tumor","Dysplasia/Gliosis","Other","Dysplasia/Gliosis-Glial-neuronal tumor NOS") ~ NA_character_,
+    TRUE ~ as.character(cancer_group))
+  ) %>%
+  # Additional update to clean up terms that we will use in plots
+  # remove short forms in the brackets
+  dplyr::mutate(cancer_group = str_extract(cancer_group, "[^(]*")) %>%
+  # remove space at the ends
+  dplyr::mutate(cancer_group = gsub(" $","",cancer_group)) 
+
+```
+
+
 #### Check differences in broad_histology 
 Checking for differences in broad_histology to look for changes in molecular_subtype 
 
@@ -209,5 +242,5 @@ histology %>%
          - short_histology.base,
          -short_histology.subtyped) %>%
   arrange(Kids_First_Biospecimen_ID) %>%
-  write_tsv("results/pbta-histologies.tsv")
+  write_tsv("results/histologies.tsv")
 ```

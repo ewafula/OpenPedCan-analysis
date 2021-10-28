@@ -2,7 +2,7 @@
 **Module author:** Eric Wafula
 
 ## Purpose
-The purpose of this analysis module is to access the status of the MYCN gene amplification status between the OpenPedCan Neuroblastoma`GMKF` and `TARGET` consensus copy number variants (CNV) calls from `WSX/WGS` data and `TARGET` SNP array (focal and segments) with clinical information in the master histologies file. The `mycn-thresholding` module performs the following analyses to produce results required for consensus CNV thresholding:
+The purpose of this analysis module is to assess the status of the MYCN gene amplification status between the OpenPedCan Neuroblastoma`GMKF` and `TARGET` consensus copy number variants (CNV) calls from `WSX/WGS` data and `TARGET` SNP arrays (focal and segments) compared to the clinical information in the master histologies file. The `mycn-thresholding` module performs the following analyses to produce results required for consensus CNV thresholding:
 #### Consensus vs clinical
 1. Identifies discordant samples in MYCN amplification status between the consensus CNV calls and the clinical information.
 2. Extracts segments in the MYCN cytogenic region (`2p24.3`) reported in the `CNVkit`, `Control-FREEC`, and `MantaSV` variant callers analysis results.

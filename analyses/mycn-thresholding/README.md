@@ -136,8 +136,8 @@ Python scripts to extract Neuroblastoma tumor MYCN gene copy number calls  from 
 
 Usage:
 ```
-python3 parse_mycn_focal_SNParray.py
-python3 parse_mycn_segment_SNParray.py
+python3 util/parse_mycn_focal_SNParray.py
+python3 util/parse_mycn_segment_SNParray.py
 ```
 
 

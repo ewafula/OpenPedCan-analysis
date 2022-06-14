@@ -1,0 +1,136 @@
+Acute Lymphoblastic Leukemia
+Acute Myeloid Leukemia
+Acute Promyelocytic Leukemia
+Adenocarcinoma
+Adrenocortical Carcinoma
+Anaplastic Large Cell Lymphoma
+Angiosarcoma
+Atypical Teratoid Rhabdoid Tumor
+B Acute Lymphoblastic Leukemia/Lymphoma
+B-lymphoblastic leukemia
+Bladder Urothelial Carcinoma
+Brain Lower Grade Glioma
+Breast Invasive Carcinoma
+Burkitt Leukemia/Lymphoma
+Cavernoma
+Cavernoma;Ependymoma
+Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma
+Cholangiocarcinoma
+Chordoma
+Choroid plexus carcinoma
+Choroid plexus tumor
+Chronic Myelogenous Leukemia
+CIC-DUX4 Sarcoma
+Clear Cell Sarcoma of the Kidney
+CNS Burkitt's lymphoma
+CNS Embryonal tumor
+CNS Melanoma
+CNS neuroblastoma
+Colon Adenocarcinoma
+congenital malignant brain tumor
+Craniopharyngioma
+Desmoid-type fibromatosis
+Desmoplastic infantile astrocytoma and ganglioglioma
+Diffuse fibrillary astrocytoma
+Diffuse intrinsic pontine glioma
+Diffuse leptomeningeal glioneuronal tumor
+Diffuse midline glioma
+Dysembryoplastic neuroepithelial tumor
+Dysgerminoma
+Dysplasia/Gliosis;Low-grade glioma/astrocytoma
+Embryonal tumor
+Embryonal Tumor NOS
+Embryonal tumor with multilayer rosettes
+Ependymoma
+Esophageal Carcinoma
+Ewing sarcoma
+Ewings Sarcoma
+Fibromixoid lesion
+Ganglioglioma
+Ganglioneuroblastoma
+Ganglioneuroma
+Germ Cell Tumor
+Germinoma
+Glial-neuronal tumor NOS
+Glioblastoma Multiforme
+Gliomatosis cerebri
+Gliomatosis Cerebri
+Glioneuronal tumor
+Gliosarcoma
+Head and Neck Squamous Cell Carcinoma
+Hemangioblastoma
+Hepatoblastoma
+Hepatocellular Carcinoma
+High Grade Sarcoma
+High-grade glioma/astrocytoma
+Histiocytic tumor
+Histiocytic Tumor
+Hodgkin's lymphoma
+Infantile Fibrosarcoma
+Inflammatory Myofibroblastic Tumor
+Intrahepatic Cholangiocarcinoma
+Juvenile xanthogranuloma
+Juvenile Xanthogranuloma
+Kidney Chromophobe
+Kidney Renal Clear Cell Carcinoma
+Kidney Renal Papillary Cell Carcinoma
+Langerhans Cell histiocytosis
+Liver Hepatocellular Carcinoma
+Low-grade glioma/astrocytoma
+Lung Adenocarcinoma
+Lung Squamous Cell Carcinoma
+Lymphoid Neoplasm Diffuse Large B-cell Lymphoma
+Malignant peripheral nerve sheath tumor
+Medulloblastoma
+Melanocytoma
+Melanoma
+Meningioma
+Mesothelioma
+Metastatic secondary tumors
+Mixed germ cell tumor
+Mixed Lineage Leukemia
+Myeloid neoplasm
+Myofibroblastic tumor
+Neuroblastoma
+Neurocytoma
+Neuroepithelial neoplasm
+Neurofibroma/Plexiform
+Non-Hodgkin Lymphoma
+Not Reported
+Oligodendroglioma
+Osteosarcoma
+Ovarian Serous Cystadenocarcinoma
+Pancreatic Adenocarcinoma
+Pheochromocytoma and Paraganglioma
+Pilocytic astrocytoma
+Pineal tumor
+Pineoblastoma
+Pineocytoma
+Pleomorphic xanthoastrocytoma
+Primary CNS lymphoma
+Prostate Adenocarcinoma
+Rectum Adenocarcinoma
+Retinoblastoma
+Rhabdoid tumor
+Rhabdomyosarcoma
+Rosai-dorfman
+Rosette-forming glioneuronal tumor
+Sarcoma
+Schwannoma
+Skin Cutaneous Melanoma
+Stomach Adenocarcinoma
+Subependymal Giant Cell Astrocytoma
+Supratentorial or Spinal Cord PNET
+T Acute Lymphoblastic Leukemia/Lymphoma
+Teratoma
+Testicular Germ Cell tumor
+Therapy-Related Acute Myeloid Leukemia
+Thymoma
+Thyroid Carcinoma
+Thyroid Gland Follicular Carcinoma
+Thyroid Gland Papillary Carcinoma
+Uterine Carcinosarcoma
+Uterine Corpus Endometrial Carcinoma
+Uveal Melanoma
+Wilms tumor
+Wilms Tumor

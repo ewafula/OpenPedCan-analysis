@@ -12,11 +12,16 @@ DGD	Angiosarcoma	Angiosarcoma	No	No
 PBTA	Atypical Teratoid Rhabdoid Tumor (ATRT)	Atypical Teratoid Rhabdoid Tumor	No	Yes
 DGD	Atypical Teratoid Rhabdoid Tumor (ATRT)	Atypical Teratoid Rhabdoid Tumor	No	Yes
 DGD	B Acute Lymphoblastic Leukemia/Lymphoma	B Acute Lymphoblastic Leukemia/Lymphoma	No	No
-DGD	B-lymphoblastic leukemia	B-lymphoblastic leukemia	No	No
 TCGA	Bladder Urothelial Carcinoma	Bladder Urothelial Carcinoma	No	No
 TCGA	Brain Lower Grade Glioma	Brain Lower Grade Glioma	No	No
 TCGA	Breast Invasive Carcinoma	Breast Invasive Carcinoma	No	No
 DGD	Burkitt Leukemia/Lymphoma	Burkitt Leukemia/Lymphoma	No	No
+DGD	CIC-DUX4 Sarcoma	CIC-DUX4 Sarcoma	No	No
+PBTA	CNS Burkitt's lymphoma	CNS Burkitt's lymphoma	No	No
+PBTA	CNS Embryonal tumor, NOS	CNS Embryonal tumor	Yes	No
+PBTA	CNS Embryonal tumor, HGNET-MN1	CNS Embryonal tumor	Yes	No
+DGD	CNS Melanoma	CNS Melanoma	No	No
+PBTA	CNS neuroblastoma	CNS neuroblastoma	No	No
 PBTA	Cavernoma	Cavernoma	No	No
 PBTA	Cavernoma;Ependymoma	Cavernoma;Ependymoma	No	No
 DGD	Cavernoma;Ependymoma	Cavernoma;Ependymoma	No	No
@@ -30,15 +35,8 @@ PBTA	Choroid plexus carcinoma	Choroid plexus carcinoma	No	No
 DGD	Choroid plexus carcinoma	Choroid plexus carcinoma	No	No
 PBTA	Choroid plexus tumor	Choroid plexus tumor	No	No
 DGD	Chronic Myelogenous Leukemia	Chronic Myelogenous Leukemia	No	No
-DGD	CIC-DUX4 Sarcoma	CIC-DUX4 Sarcoma	No	No
 TARGET	Clear Cell Sarcoma of the Kidney	Clear Cell Sarcoma of the Kidney	No	No
-PBTA	CNS Burkitt's lymphoma	CNS Burkitt's lymphoma	No	No
-PBTA	CNS Embryonal tumor, NOS	CNS Embryonal tumor	Yes	No
-PBTA	CNS Embryonal tumor, HGNET-MN1	CNS Embryonal tumor	Yes	No
-DGD	CNS Melanoma	CNS Melanoma	No	No
-PBTA	CNS neuroblastoma	CNS neuroblastoma	No	No
 TCGA	Colon Adenocarcinoma	Colon Adenocarcinoma	No	No
-DGD	congenital malignant brain tumor	congenital malignant brain tumor	No	No
 PBTA	Adamantinomatous craniopharyngioma	Craniopharyngioma	No	Yes
 PBTA	Craniopharyngioma	Craniopharyngioma	No	No
 DGD	Craniopharyngioma	Craniopharyngioma	No	No
@@ -59,9 +57,9 @@ PBTA	Dysembryoplastic neuroepithelial tumor (DNET);Dysplasia/Gliosis;Ganglioglio
 DGD	Dysembryoplastic neuroepithelial tumor (DNET)	Dysembryoplastic neuroepithelial tumor	No	Yes
 DGD	Dysgerminoma	Dysgerminoma	No	No
 DGD	Dysplasia/Gliosis;Low-grade glioma/astrocytoma (WHO grade I/II)	Dysplasia/Gliosis;Low-grade glioma/astrocytoma	No	Yes
+DGD	Embryonal Tumor NOS	Embryonal Tumor NOS	No	No
 PBTA	Embryonal tumor	Embryonal tumor	No	No
 DGD	Embryonal tumor	Embryonal tumor	No	No
-DGD	Embryonal Tumor NOS	Embryonal Tumor NOS	No	No
 PBTA	Embryonal tumor with multilayer rosettes, C19MC-altered	Embryonal tumor with multilayer rosettes	Yes	No
 PBTA	Embryonal Tumor with Multilayered Rosettes (ETMR)	Embryonal tumor with multilayer rosettes	No	Yes
 PBTA	Embryonal tumor with multilayer rosettes, NOS	Embryonal tumor with multilayer rosettes	Yes	No
@@ -112,8 +110,8 @@ PBTA	Glial-neuronal tumor NOS,  KIAA1549-BRAF	Glial-neuronal tumor NOS	Yes	No
 PBTA	Glial-neuronal tumor NOS,  other MAPK	Glial-neuronal tumor NOS	Yes	No
 DGD	Glial-neuronal tumor NOS	Glial-neuronal tumor NOS	No	No
 TCGA	Glioblastoma Multiforme	Glioblastoma Multiforme	No	No
-PBTA	Gliomatosis cerebri, IDH	Gliomatosis cerebri	Yes	No
 PBTA	Gliomatosis Cerebri	Gliomatosis Cerebri	No	No
+PBTA	Gliomatosis cerebri, IDH	Gliomatosis cerebri	Yes	No
 PBTA	Glioneuronal tumor	Glioneuronal tumor	No	No
 DGD	Glioneuronal tumor	Glioneuronal tumor	No	No
 PBTA	Gliosarcoma	Gliosarcoma	No	No
@@ -129,15 +127,15 @@ PBTA	High-grade glioma/astrocytoma, H3 wildtype	High-grade glioma/astrocytoma	Ye
 PBTA	High-grade glioma/astrocytoma, H3 G35-mutant	High-grade glioma/astrocytoma	Yes	No
 PBTA	High-grade glioma/astrocytoma, IDH-mutant	High-grade glioma/astrocytoma	Yes	No
 DGD	High-grade glioma/astrocytoma (WHO grade III/IV)	High-grade glioma/astrocytoma	No	Yes
-DGD	Histiocytic tumor	Histiocytic tumor	No	No
 DGD	Histiocytic Tumor	Histiocytic Tumor	No	No
+DGD	Histiocytic tumor	Histiocytic tumor	No	No
 DGD	Hodgkin's lymphoma	Hodgkin's lymphoma	No	No
 DGD	Infantile Fibrosarcoma	Infantile Fibrosarcoma	No	No
 DGD	Inflammatory Myofibroblastic Tumor	Inflammatory Myofibroblastic Tumor	No	No
 DGD	Intrahepatic Cholangiocarcinoma	Intrahepatic Cholangiocarcinoma	No	No
+DGD	Juvenile Xanthogranuloma	Juvenile Xanthogranuloma	No	No
 PBTA	Juvenile xanthogranuloma	Juvenile xanthogranuloma	No	No
 DGD	Juvenile xanthogranuloma	Juvenile xanthogranuloma	No	No
-DGD	Juvenile Xanthogranuloma	Juvenile Xanthogranuloma	No	No
 TCGA	Kidney Chromophobe	Kidney Chromophobe	No	No
 TCGA	Kidney Renal Clear Cell Carcinoma	Kidney Renal Clear Cell Carcinoma	No	No
 TCGA	Kidney Renal Papillary Cell Carcinoma	Kidney Renal Papillary Cell Carcinoma	No	No
@@ -184,10 +182,10 @@ DGD	Meningioma	Meningioma	No	No
 TCGA	Mesothelioma	Mesothelioma	No	No
 PBTA	Metastatic secondary tumors	Metastatic secondary tumors	No	No
 DGD	Metastatic secondary tumors	Metastatic secondary tumors	No	No
+DGD	Mixed Lineage Leukemia	Mixed Lineage Leukemia	No	No
 PBTA	Mixed germ cell tumor	Mixed germ cell tumor	No	No
 DGD	Mixed germ cell tumor	Mixed germ cell tumor	No	No
-DGD	Mixed Lineage Leukemia	Mixed Lineage Leukemia	No	No
-DGD	Myeloid neoplasm	Myeloid neoplasm	No	No
+DGD	Myeloid Neoplasm	Myeloid Neoplasm	No	No
 PBTA	Myofibroblastic tumor	Myofibroblastic tumor	No	No
 DGD	Myofibroblastic tumor	Myofibroblastic tumor	No	No
 PBTA	Neuroblastoma	Neuroblastoma	No	No
@@ -271,8 +269,9 @@ DGD	Thyroid Gland Papillary Carcinoma	Thyroid Gland Papillary Carcinoma	No	No
 TCGA	Uterine Carcinosarcoma	Uterine Carcinosarcoma	No	No
 TCGA	Uterine Corpus Endometrial Carcinoma	Uterine Corpus Endometrial Carcinoma	No	No
 TCGA	Uveal Melanoma	Uveal Melanoma	No	No
-TARGET	Kidney Wilms Tumor	Wilms tumor	No	Yes
 DGD	Wilms Tumor	Wilms Tumor	No	No
+TARGET	Kidney Wilms Tumor	Wilms tumor	No	Yes
+DGD	congenital malignant brain tumor	congenital malignant brain tumor	No	No
 PBTA	Dysplasia/Gliosis	NA	No	Yes
 PBTA	Choroid plexus papilloma	NA	No	Yes
 PBTA	Adenoma	NA	No	Yes

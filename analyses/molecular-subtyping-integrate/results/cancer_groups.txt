@@ -7,11 +7,15 @@ Anaplastic Large Cell Lymphoma
 Angiosarcoma
 Atypical Teratoid Rhabdoid Tumor
 B Acute Lymphoblastic Leukemia/Lymphoma
-B-lymphoblastic leukemia
 Bladder Urothelial Carcinoma
 Brain Lower Grade Glioma
 Breast Invasive Carcinoma
 Burkitt Leukemia/Lymphoma
+CIC-DUX4 Sarcoma
+CNS Burkitt's lymphoma
+CNS Embryonal tumor
+CNS Melanoma
+CNS neuroblastoma
 Cavernoma
 Cavernoma;Ependymoma
 Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma
@@ -20,14 +24,8 @@ Chordoma
 Choroid plexus carcinoma
 Choroid plexus tumor
 Chronic Myelogenous Leukemia
-CIC-DUX4 Sarcoma
 Clear Cell Sarcoma of the Kidney
-CNS Burkitt's lymphoma
-CNS Embryonal tumor
-CNS Melanoma
-CNS neuroblastoma
 Colon Adenocarcinoma
-congenital malignant brain tumor
 Craniopharyngioma
 Desmoid-type fibromatosis
 Desmoplastic infantile astrocytoma and ganglioglioma
@@ -38,8 +36,8 @@ Diffuse midline glioma
 Dysembryoplastic neuroepithelial tumor
 Dysgerminoma
 Dysplasia/Gliosis;Low-grade glioma/astrocytoma
-Embryonal tumor
 Embryonal Tumor NOS
+Embryonal tumor
 Embryonal tumor with multilayer rosettes
 Ependymoma
 Esophageal Carcinoma
@@ -53,8 +51,8 @@ Germ Cell Tumor
 Germinoma
 Glial-neuronal tumor NOS
 Glioblastoma Multiforme
-Gliomatosis cerebri
 Gliomatosis Cerebri
+Gliomatosis cerebri
 Glioneuronal tumor
 Gliosarcoma
 Head and Neck Squamous Cell Carcinoma
@@ -63,14 +61,14 @@ Hepatoblastoma
 Hepatocellular Carcinoma
 High Grade Sarcoma
 High-grade glioma/astrocytoma
-Histiocytic tumor
 Histiocytic Tumor
+Histiocytic tumor
 Hodgkin's lymphoma
 Infantile Fibrosarcoma
 Inflammatory Myofibroblastic Tumor
 Intrahepatic Cholangiocarcinoma
-Juvenile xanthogranuloma
 Juvenile Xanthogranuloma
+Juvenile xanthogranuloma
 Kidney Chromophobe
 Kidney Renal Clear Cell Carcinoma
 Kidney Renal Papillary Cell Carcinoma
@@ -87,9 +85,9 @@ Melanoma
 Meningioma
 Mesothelioma
 Metastatic secondary tumors
-Mixed germ cell tumor
 Mixed Lineage Leukemia
-Myeloid neoplasm
+Mixed germ cell tumor
+Myeloid Neoplasm
 Myofibroblastic tumor
 Neuroblastoma
 Neurocytoma
@@ -132,5 +130,6 @@ Thyroid Gland Papillary Carcinoma
 Uterine Carcinosarcoma
 Uterine Corpus Endometrial Carcinoma
 Uveal Melanoma
-Wilms tumor
 Wilms Tumor
+Wilms tumor
+congenital malignant brain tumor

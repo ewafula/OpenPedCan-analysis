@@ -19,6 +19,13 @@ B Acute Lymphoblastic Leukemia/Lymphoma	Primary Tumor	92
 B Acute Lymphoblastic Leukemia/Lymphoma	Progressive	2
 B Acute Lymphoblastic Leukemia/Lymphoma	Recurrence	80
 Burkitt Leukemia/Lymphoma	Primary Tumor	8
+CIC-DUX4 Sarcoma	Primary Tumor	2
+CNS Burkitt's lymphoma	Initial CNS Tumor	2
+CNS Embryonal tumor	Initial CNS Tumor	28
+CNS Embryonal tumor	Progressive	11
+CNS Embryonal tumor	Recurrence	5
+CNS neuroblastoma	Initial CNS Tumor	4
+CNS neuroblastoma	Recurrence	1
 Cavernoma	Initial CNS Tumor	5
 Cavernoma	Second Malignancy	1
 Chordoma	Initial CNS Tumor	13
@@ -26,14 +33,7 @@ Chordoma	Progressive	10
 Chordoma	Recurrence	3
 Choroid plexus carcinoma	Initial CNS Tumor	19
 Chronic Myelogenous Leukemia	Primary Tumor	4
-CIC-DUX4 Sarcoma	Primary Tumor	2
 Clear cell sarcoma of the kidney	Primary Tumor	24
-CNS Burkitt's lymphoma	Initial CNS Tumor	2
-CNS Embryonal tumor	Initial CNS Tumor	28
-CNS Embryonal tumor	Progressive	11
-CNS Embryonal tumor	Recurrence	5
-CNS neuroblastoma	Initial CNS Tumor	4
-CNS neuroblastoma	Recurrence	1
 Craniopharyngioma	Initial CNS Tumor	71
 Craniopharyngioma	Progressive	18
 Craniopharyngioma	Recurrence	5

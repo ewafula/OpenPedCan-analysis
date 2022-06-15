@@ -21,8 +21,9 @@ DGD	Burkitt Leukemia/Lymphoma	Burkitt Leukemia/Lymphoma	No	No
 DGD	CIC-DUX4 Sarcoma	CIC-DUX4 Sarcoma	No	No
 PBTA	CNS Burkitt's lymphoma	CNS Burkitt's lymphoma	No	No
 PBTA	CNS Embryonal tumor, NOS	CNS Embryonal tumor	Yes	No
+PBTA	Supratentorial or Spinal Cord PNET	CNS Embryonal tumor	No	Yes
 PBTA	CNS Embryonal tumor, HGNET-MN1	CNS Embryonal tumor	Yes	No
-DGD	CNS Melanoma	CNS Melanoma	No	No
+DGD	Supratentorial or Spinal Cord PNET	CNS Embryonal tumor	No	Yes
 PBTA	CNS neuroblastoma	CNS neuroblastoma	No	No
 PBTA	Cavernoma	Cavernoma	No	No
 TCGA	Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma	Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma	No	No
@@ -35,21 +36,8 @@ PBTA	Choroid plexus carcinoma	Choroid plexus carcinoma	No	No
 DGD	Choroid plexus carcinoma	Choroid plexus carcinoma	No	No
 TCGA	Kidney Chromophobe	Chromophobe renal cell carcinoma	No	Yes
 DGD	Chronic Myelogenous Leukemia	Chronic Myelogenous Leukemia	No	No
-<<<<<<< HEAD
-TARGET	Clear Cell Sarcoma of the Kidney	Clear Cell Sarcoma of the Kidney	No	No
-TCGA	Colon Adenocarcinoma	Colon Adenocarcinoma	No	No
-PBTA	Adamantinomatous craniopharyngioma	Craniopharyngioma	No	Yes
-=======
-DGD	CIC-DUX4 Sarcoma	CIC-DUX4 Sarcoma	No	No
 TARGET	Clear Cell Sarcoma of the Kidney	Clear cell sarcoma of the kidney	No	Yes
-PBTA	CNS Burkitt's lymphoma	CNS Burkitt's lymphoma	No	No
-PBTA	CNS Embryonal tumor, NOS	CNS Embryonal tumor	Yes	No
-PBTA	Supratentorial or Spinal Cord PNET	CNS Embryonal tumor	No	Yes
-PBTA	CNS Embryonal tumor, HGNET-MN1	CNS Embryonal tumor	Yes	No
-DGD	Supratentorial or Spinal Cord PNET	CNS Embryonal tumor	No	Yes
-PBTA	CNS neuroblastoma	CNS neuroblastoma	No	No
 TCGA	Colon Adenocarcinoma	Colon Adenocarcinoma	No	No
->>>>>>> 63f2ce47dad24258d437d8b0ad27ac5e299db574
 PBTA	Craniopharyngioma	Craniopharyngioma	No	No
 DGD	Craniopharyngioma	Craniopharyngioma	No	No
 PBTA	Desmoplastic infantile astrocytoma and ganglioglioma, RTK	Desmoplastic infantile astrocytoma and ganglioglioma	Yes	No
@@ -65,14 +53,7 @@ PBTA	Diffuse midline glioma, H3 K28-mutant	Diffuse midline glioma	Yes	No
 PBTA	Dysembryoplastic neuroepithelial tumor (DNET)	Dysembryoplastic neuroepithelial tumor	No	Yes
 DGD	Dysembryoplastic neuroepithelial tumor (DNET)	Dysembryoplastic neuroepithelial tumor	No	Yes
 DGD	Dysgerminoma	Dysgerminoma	No	No
-<<<<<<< HEAD
-DGD	Dysplasia/Gliosis;Low-grade glioma/astrocytoma (WHO grade I/II)	Dysplasia/Gliosis;Low-grade glioma/astrocytoma	No	Yes
 DGD	Embryonal Tumor NOS	Embryonal Tumor NOS	No	No
-PBTA	Embryonal tumor	Embryonal tumor	No	No
-DGD	Embryonal tumor	Embryonal tumor	No	No
-=======
-DGD	Embryonal Tumor NOS	Embryonal Tumor NOS	No	No
->>>>>>> 63f2ce47dad24258d437d8b0ad27ac5e299db574
 PBTA	Embryonal tumor with multilayer rosettes, C19MC-altered	Embryonal tumor with multilayer rosettes	Yes	No
 PBTA	Embryonal Tumor with Multilayered Rosettes (ETMR)	Embryonal tumor with multilayer rosettes	No	Yes
 PBTA	Ependymoma	Ependymoma	No	No
@@ -116,17 +97,8 @@ PBTA	Glial-neuronal tumor NOS,  KIAA1549-BRAF	Glial-neuronal tumor NOS	Yes	No
 PBTA	Glial-neuronal tumor NOS,  other MAPK	Glial-neuronal tumor NOS	Yes	No
 DGD	Glial-neuronal tumor NOS	Glial-neuronal tumor NOS	No	No
 TCGA	Glioblastoma Multiforme	Glioblastoma Multiforme	No	No
-<<<<<<< HEAD
-PBTA	Gliomatosis Cerebri	Gliomatosis Cerebri	No	No
-PBTA	Gliomatosis cerebri, IDH	Gliomatosis cerebri	Yes	No
-PBTA	Glioneuronal tumor	Glioneuronal tumor	No	No
-DGD	Glioneuronal tumor	Glioneuronal tumor	No	No
-PBTA	Gliosarcoma	Gliosarcoma	No	No
-DGD	Gliosarcoma	Gliosarcoma	No	No
-=======
 PBTA	Gliomatosis cerebri, IDH	Gliomatosis Cerebri	Yes	Yes
 PBTA	Gliomatosis Cerebri	Gliomatosis Cerebri	No	No
->>>>>>> 63f2ce47dad24258d437d8b0ad27ac5e299db574
 TCGA	Head and Neck Squamous Cell Carcinoma	Head and Neck Squamous Cell Carcinoma	No	No
 PBTA	Hemangioblastoma	Hemangioblastoma	No	No
 DGD	Hemangioblastoma	Hemangioblastoma	No	No
@@ -139,19 +111,12 @@ PBTA	High-grade glioma/astrocytoma, H3 G35-mutant	High-grade glioma/astrocytoma	
 PBTA	High-grade glioma/astrocytoma, IDH-mutant	High-grade glioma/astrocytoma	Yes	No
 DGD	High-grade glioma/astrocytoma (WHO grade III/IV)	High-grade glioma/astrocytoma	No	Yes
 DGD	Histiocytic Tumor	Histiocytic Tumor	No	No
-DGD	Histiocytic tumor	Histiocytic tumor	No	No
 DGD	Hodgkin's lymphoma	Hodgkin's lymphoma	No	No
 DGD	Infantile Fibrosarcoma	Infantile Fibrosarcoma	No	No
 DGD	Inflammatory Myofibroblastic Tumor	Inflammatory Myofibroblastic Tumor	No	No
 DGD	Intrahepatic Cholangiocarcinoma	Intrahepatic Cholangiocarcinoma	No	No
-DGD	Juvenile Xanthogranuloma	Juvenile Xanthogranuloma	No	No
 PBTA	Juvenile xanthogranuloma	Juvenile xanthogranuloma	No	No
-<<<<<<< HEAD
-DGD	Juvenile xanthogranuloma	Juvenile xanthogranuloma	No	No
-TCGA	Kidney Chromophobe	Kidney Chromophobe	No	No
-=======
 DGD	Juvenile Xanthogranuloma	Juvenile xanthogranuloma	No	Yes
->>>>>>> 63f2ce47dad24258d437d8b0ad27ac5e299db574
 TCGA	Kidney Renal Clear Cell Carcinoma	Kidney Renal Clear Cell Carcinoma	No	No
 TCGA	Kidney Renal Papillary Cell Carcinoma	Kidney Renal Papillary Cell Carcinoma	No	No
 PBTA	Langerhans Cell histiocytosis	Langerhans Cell histiocytosis	No	No
@@ -195,15 +160,8 @@ DGD	Meningioma	Meningioma	No	No
 TCGA	Mesothelioma	Mesothelioma	No	No
 PBTA	Metastatic secondary tumors	Metastatic secondary tumors	No	No
 DGD	Metastatic secondary tumors	Metastatic secondary tumors	No	No
-DGD	Mixed Lineage Leukemia	Mixed Lineage Leukemia	No	No
 PBTA	Mixed germ cell tumor	Mixed germ cell tumor	No	No
 DGD	Mixed germ cell tumor	Mixed germ cell tumor	No	No
-<<<<<<< HEAD
-DGD	Myeloid Neoplasm	Myeloid Neoplasm	No	No
-PBTA	Myofibroblastic tumor	Myofibroblastic tumor	No	No
-DGD	Myofibroblastic tumor	Myofibroblastic tumor	No	No
-=======
->>>>>>> 63f2ce47dad24258d437d8b0ad27ac5e299db574
 PBTA	Neuroblastoma	Neuroblastoma	No	No
 GMKF	Neuroblastoma	Neuroblastoma	No	No
 TARGET	Neuroblastoma	Neuroblastoma	No	No
@@ -277,14 +235,8 @@ DGD	Thyroid Gland Papillary Carcinoma	Thyroid Gland Papillary Carcinoma	No	No
 TCGA	Uterine Carcinosarcoma	Uterine Carcinosarcoma	No	No
 TCGA	Uterine Corpus Endometrial Carcinoma	Uterine Corpus Endometrial Carcinoma	No	No
 TCGA	Uveal Melanoma	Uveal Melanoma	No	No
-<<<<<<< HEAD
-DGD	Wilms Tumor	Wilms Tumor	No	No
-TARGET	Kidney Wilms Tumor	Wilms tumor	No	Yes
-DGD	congenital malignant brain tumor	congenital malignant brain tumor	No	No
-=======
 TARGET	Wilms tumor	Wilms tumor	No	No
 DGD	Wilms Tumor	Wilms tumor	No	Yes
->>>>>>> 63f2ce47dad24258d437d8b0ad27ac5e299db574
 PBTA	Dysplasia/Gliosis	NA	No	Yes
 PBTA	Choroid plexus papilloma	NA	No	Yes
 PBTA	Adenoma	NA	No	Yes

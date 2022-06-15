@@ -19,15 +19,14 @@ Bone marrow cellularity	NA
 Bone marrow failure	NA
 Brain Lower Grade Glioma	Low-grade glioma/astrocytoma
 Brainstem glioma- Diffuse intrinsic pontine glioma	Diffuse intrinsic pontine glioma
+CNS Embryonal tumor	NA
+CNS Melanoma	NA
 Cavernoma;Ependymoma	NA
 Choroid plexus papilloma	NA
 Choroid plexus tumor	NA
 Chronic myeloid leukemia pathway	NA
-Clear cell meningioma	Meningioma
 Clear Cell Sarcoma of the Kidney	Clear cell sarcoma of the kidney
-CNS Embryonal tumor	NA
-CNS Melanoma	NA
-congenital malignant brain tumor	NA
+Clear cell meningioma	Meningioma
 Cranial fasciitis	NA
 Cyst	NA
 Dermoid cyst	NA
@@ -38,9 +37,9 @@ Dysembryoplastic neuroepithelial tumor (DNET);Dysplasia/Gliosis;Ganglioglioma	NA
 Dysembryoplastic neuroepithelial tumor (DNET);Ganglioglioma	NA
 Dysplasia/Gliosis	NA
 Dysplasia/Gliosis;Low-grade glioma/astrocytoma (WHO grade I/II)	NA
+Embryonal Tumor with Multilayered Rosettes (ETMR)	Embryonal tumor with multilayer rosettes
 Embryonal tumor	NA
 Embryonal tumor with multilayer rosettes	NA
-Embryonal Tumor with Multilayered Rosettes (ETMR)	Embryonal tumor with multilayer rosettes
 Ependymoma;Metastatic secondary tumors	NA
 Epidermoid cyst	NA
 Epilepsy	NA
@@ -65,8 +64,8 @@ Igg4 pseudotumor inflammatory disorder	NA
 Inclusion cyst	NA
 Inflammatory lesion	NA
 Ini-1 negative tumor cells surrounded by reactive astrocytes most c/w metastatic malignant rhabdoid tumor	NA
-Juvenile xanthogranuloma	NA
 Juvenile Xanthogranuloma	Juvenile xanthogranuloma
+Juvenile xanthogranuloma	NA
 Kidney Chromophobe	Chromophobe renal cell carcinoma
 Klippel-trenaunay-weber syndrome	NA
 Lipoblastoma	NA
@@ -127,3 +126,4 @@ Type ii pleuropulmonary blastoma	NA
 Undifferentiated malignant neoplasm	NA
 Vascular malformation	NA
 Wilms Tumor	Wilms tumor
+congenital malignant brain tumor	NA

@@ -266,7 +266,7 @@ Checking for differences in broad_histology to look for changes in molecular_sub
 
 
 ```{r}
-diff_broad_histology<- histology %>%
+diff_broad_histology<- histology_cg %>%
   filter(toupper(broad_histology.base) != toupper(broad_histology.subtyped)) %>%
   select(Kids_First_Biospecimen_ID,starts_with("broad_histology"),starts_with("short_histology")) %>%
   unique()
@@ -280,7 +280,7 @@ This will help us check what string assignment path_dx to short_histology mappin
 
 ```{r}
 
-histology %>% 
+histology_cg %>% 
   filter(!Kids_First_Biospecimen_ID %in% diff_broad_histology$Kids_First_Biospecimen_ID) %>%
    filter(toupper(short_histology.base) != toupper(short_histology.subtyped) 
          ) %>%
@@ -300,7 +300,7 @@ But first need to remove broad_histology.base, broad_histology.subtyped and shor
  and short_histology.subtyped
 
 ```{r}
-histology_final <- histology %>% 
+histology_final <- histology_cg %>% 
   select(-broad_histology.base,
          -broad_histology.subtyped,
          - short_histology.base,

@@ -159,7 +159,6 @@ Provides a narrower grouping for samples that can be used in generating figures
 histology_cg <- histology %>%
   # remove subtype details
   dplyr::mutate(cancer_group = case_when(broad_histology %in% c("Benign tumor", "Other", "Non-tumor", "Pre-cancerous lesion") ~ NA_character_,
-                                         pathology_diagnosis == "Other" ~ NA_character_,
                                          TRUE ~ str_extract(harmonized_diagnosis, "[^,]*"))) %>%
    # update some values that come from pathology_diagnosis which are not standardized yet
   dplyr::mutate(cancer_group = case_when(
@@ -169,16 +168,25 @@ histology_cg <- histology %>%
     cancer_group == "Non-germinomatous germ cell tumor;Teratoma" ~ "Mixed germ cell tumor",
     cancer_group %in% c("Meningothelial meningioma", "Clear cell meningioma", "Atypical meningioma", "Anaplastic (malignant) meningioma") ~ "Meningioma",
     cancer_group == "Supratentorial or Spinal Cord PNET" ~ "CNS Embryonal tumor",
+    cancer_group == "Embryonal tumor" ~ "Embryonal tumor",
     cancer_group == "Embryonal Tumor with Multilayered Rosettes (ETMR)" ~ "Embryonal tumor with multilayer rosettes",
     cancer_group %in% c("Wilms Tumor", "Juvenile Xanthogranuloma", "Clear Cell Sarcoma of the Kidney") ~ stringr::str_to_sentence(cancer_group),
     cancer_group == "Ependymoma;Metastatic secondary tumors" ~ "Ependymoma",
     cancer_group %in% c("Acute Promyelocytic Leukemia", "Therapy-Related Acute Myeloid Leukemia") ~ "Acute Myeloid Leukemia",
     cancer_group %in% c("Mixed Lineage Leukemia") ~ "Acute Lymphoblastic Leukemia",
     cancer_group == "Brain Lower Grade Glioma" ~ "Low-grade glioma/astrocytoma",
+    cancer_group == "congenital malignant brain tumor" ~ "High-grade glioma/astrocytoma",
     cancer_group == "Kidney Chromophobe" ~ "Chromophobe renal cell carcinoma",
+    cancer_group == "Kidney Renal Clear Cell Carcinoma" ~ "Renal Clear Cell Carcinoma",
+    cancer_group == "Kidney Renal Papillary Cell Carcinoma" ~ "Renal Papillary Cell Carcinoma",    
     cancer_group == "High Grade Sarcoma" ~ "Sarcoma",
     # update cases for EFO/MONDO - need to work on this to not be manual
     cancer_group %in% c("Adamantinomatous craniopharyngioma", "Gliomatosis cerebri") ~ str_to_title(cancer_group),
+    #typo
+    cancer_group == "Fibromixoid lesion" ~ "Fibromyxoid lesion",
+    cancer_group == "Glioneuronal tumor" ~ "Glial-neuronal tumor NOS",
+    cancer_group == "Histiocytic Tumor" ~ str_to_sentence(cancer_group),
+    cancer_group == "Melanocytoma" ~ "Melanocytic tumor",
     short_histology == "LIHC" ~ "Hepatocellular Carcinoma",
     harmonized_diagnosis == "Rosai-dorfman" ~ "Rosai-Dorfman disease",
     TRUE ~ as.character(cancer_group))
@@ -319,13 +327,10 @@ all_cg  <- ped_cancer_groups %>%
 efo_mondo <- read_tsv(file.path(data_dir, "efo-mondo-map.tsv"))
 
 efo_v11 <- all_cg %>%
-  full_join(efo_mondo) %>%
-  # remove mixed/not needed anymore
-  filter(cancer_group != "Germinoma;Teratoma", cancer_group != "Rhabdoid tumor") %>%
+  left_join(efo_mondo) %>%
   unique() %>%
   arrange(cancer_group) %>%
-  write_tsv(file.path("..", "..", "analyses", "efo-mondo-mapping", "results", "efo-mondo--map-prefill.tsv"))
-
+  write_tsv(file.path("..", "..", "analyses", "efo-mondo-mapping", "results", "efo-mondo-map-prefill.tsv"))
 ```
 
 

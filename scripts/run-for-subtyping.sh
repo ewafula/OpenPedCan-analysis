@@ -13,6 +13,10 @@ OPENPBTA_BASE_SUBTYPING=1
 
 ## Step 1. Generate summary files needed for subtyping
 
+# Create the independent sample list using the *base* histology file (i.e. - histologies-base.tsv)
+echo "Create independent sample list"
+OPENPBTA_BASE_SUBTYPING=1 ../analyses/independent-samples/run-independent-samples.sh
+
 echo "Run gsea"
 OPENPBTA_BASE_SUBTYPING=1 ../analyses/gene-set-enrichment-analysis/run-gsea.sh
 

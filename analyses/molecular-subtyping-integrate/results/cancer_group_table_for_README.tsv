@@ -13,7 +13,6 @@ Atypical choroid plexus papilloma	NA
 Atypical lymphoid infiltrate	NA
 Atypical meningioma	Meningioma
 Atypical vascular lesion	NA
-B Acute Lymphoblastic Leukemia/Lymphoma	NA
 Benign Vascular Neoplasm	NA
 Bone marrow cellularity	NA
 Bone marrow failure	NA
@@ -23,41 +22,44 @@ CNS Embryonal tumor	NA
 CNS Melanoma	NA
 Cavernoma;Ependymoma	NA
 Choroid plexus papilloma	NA
-Choroid plexus tumor	NA
 Chronic myeloid leukemia pathway	NA
 Clear Cell Sarcoma of the Kidney	Clear cell sarcoma of the kidney
+<<<<<<< HEAD
 Clear cell meningioma	Meningioma
+=======
+congenital malignant brain tumor	High-grade glioma/astrocytoma
+>>>>>>> a559b09336e495501fa643018b8e340e0def56e2
 Cranial fasciitis	NA
 Cyst	NA
 Dermoid cyst	NA
 Dermoid inclusion cyst	NA
-Desmoid-type fibromatosis	NA
 Dysembryoplastic neuroepithelial tumor (DNET)	Dysembryoplastic neuroepithelial tumor
 Dysembryoplastic neuroepithelial tumor (DNET);Dysplasia/Gliosis;Ganglioglioma	NA
 Dysembryoplastic neuroepithelial tumor (DNET);Ganglioglioma	NA
 Dysplasia/Gliosis	NA
 Dysplasia/Gliosis;Low-grade glioma/astrocytoma (WHO grade I/II)	NA
 Embryonal Tumor with Multilayered Rosettes (ETMR)	Embryonal tumor with multilayer rosettes
+<<<<<<< HEAD
 Embryonal tumor	NA
 Embryonal tumor with multilayer rosettes	NA
+=======
+>>>>>>> a559b09336e495501fa643018b8e340e0def56e2
 Ependymoma;Metastatic secondary tumors	NA
 Epidermoid cyst	NA
 Epilepsy	NA
 Fibroma	NA
-Fibromixoid lesion	NA
+Fibromixoid lesion	Fibromyxoid lesion
 Fibrous dysplasia	NA
 Ganglioglioma;Low-grade glioma/astrocytoma (WHO grade I/II)	NA
-Ganglioneuroma	NA
 Glioblastoma Multiforme Pathway	NA
 Gliomatosis cerebri	Gliomatosis Cerebri
-Glioneuronal tumor	NA
-Gliosarcoma	NA
+Glioneuronal tumor	Glial-neuronal tumor NOS
 Hamartoma	NA
 Hamartomatous lesion	NA
 Hemangioma	NA
 High Grade Sarcoma	Sarcoma
 High-grade glioma/astrocytoma (WHO grade III/IV)	High-grade glioma/astrocytoma
-Histiocytic tumor	NA
+Histiocytic Tumor	Histiocytic tumor
 Hypocellular bone marrow	NA
 Hypophyseal stalk thickening	NA
 Igg4 pseudotumor inflammatory disorder	NA
@@ -67,28 +69,26 @@ Ini-1 negative tumor cells surrounded by reactive astrocytes most c/w metastatic
 Juvenile Xanthogranuloma	Juvenile xanthogranuloma
 Juvenile xanthogranuloma	NA
 Kidney Chromophobe	Chromophobe renal cell carcinoma
+Kidney Renal Clear Cell Carcinoma	Renal Clear Cell Carcinoma
+Kidney Renal Papillary Cell Carcinoma	Renal Papillary Cell Carcinoma
 Klippel-trenaunay-weber syndrome	NA
 Lipoblastoma	NA
 Lipoma	NA
-Liver Hepatocellular Carcinoma	Hepatocellular Carcinoma
 Low-grade glioma/astrocytoma (WHO grade I/II)	Low-grade glioma/astrocytoma
 Lymphadenitis	NA
 Malignant peripheral nerve sheath tumor (MPNST)	Malignant peripheral nerve sheath tumor
 Malignant peripheral nerve sheath tumor (MPNST);Neurofibroma/Plexiform	NA
-Melanocytoma	NA
+Melanocytoma	Melanocytic tumor
 Meningioangiomatosis	NA
 Meningioma;Neurofibroma/Plexiform	NA
 Meningothelial meningioma	Meningioma
 Mixed Lineage Leukemia	Acute Lymphoblastic Leukemia
 Myelodysplastic syndrome	NA
-Myeloid Neoplasm	NA
-Myofibroblastic tumor	NA
 Myxoid spindle cell tumor	NA
 Necrotizing myelopathy	NA
 Neuroblastic tumor	NA
 Neurocytoma	NA
 Neuroendocrine carcinoma	NA
-Neuroepithelial neoplasm	NA
 Neutropenia	NA
 Nodular fasciitis	NA
 Non-cancer diagnosis	NA
@@ -97,13 +97,9 @@ Noonan syndrome	NA
 Not Reported	NA
 Ossifying fibroma	NA
 Osteoblastoma	NA
-Osteosarcoma	NA
 Ovarian sertoli-leydig cell tumor	NA
 Paraganglioma	NA
 Perineuroma	NA
-Pineal tumor	NA
-Pineocytoma	NA
-Pleomorphic xanthoastrocytoma	NA
 Pleuropulmonary blastoma	NA
 Portions of white matter with a few reactive astrocytes and rare cells with mild atypia	NA
 Primary myelofibrosis	NA

@@ -24,7 +24,7 @@
 #' @return a data frame of Participant and Specimen IDs, each present only once.
 independent_samples <- function(histology_df, 
                                 tumor_types = c("primary", "relapse", "prefer_primary", "any"), 
-                                independent_level = c("all-cohorts", "each-cohort"),
+                                independent_level = c("all-cohorts", "each-cohort", "all-cohorts-release"),
                                 seed){
   tumor_types <- match.arg(tumor_types)
   independent_level <- match.arg(independent_level)
@@ -107,6 +107,17 @@ independent_samples <- function(histology_df,
     independent_all <- sample_df %>%
       dplyr::distinct(Kids_First_Participant_ID, .keep_all = TRUE) %>%
       dplyr::select(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, cohort, cancer_group, experimental_strategy, tumor_descriptor)
+    
+    return(independent_all)
+  }
+  
+  
+  if(independent_level == "all-cohorts-release"){
+    
+    independent_all <- sample_df %>%
+      dplyr::distinct(Kids_First_Participant_ID, .keep_all = TRUE) %>%
+      dplyr::select(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, cohort, tumor_descriptor) %>%
+      arrange(Kids_First_Biospecimen_ID)
     
     return(independent_all)
   }

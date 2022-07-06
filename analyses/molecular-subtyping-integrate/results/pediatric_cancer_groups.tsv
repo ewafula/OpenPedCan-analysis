@@ -1,9 +1,9 @@
 cancer_group	tumor_descriptor	n
 Acute Lymphoblastic Leukemia	Primary Tumor	1294
 Acute Lymphoblastic Leukemia	Recurrence	109
-Acute Myeloid Leukemia	Primary Tumor	517
+Acute Myeloid Leukemia	Primary Tumor	322
 Acute Myeloid Leukemia	Progressive	4
-Acute Myeloid Leukemia	Recurrence	90
+Acute Myeloid Leukemia	Recurrence	151
 Acute Myeloid Leukemia	Second Malignancy	4
 Adamantinomatous Craniopharyngioma	Initial CNS Tumor	36
 Adamantinomatous Craniopharyngioma	Progressive	2
@@ -14,6 +14,7 @@ Angiosarcoma	Primary Tumor	2
 Atypical Teratoid Rhabdoid Tumor	Initial CNS Tumor	90
 Atypical Teratoid Rhabdoid Tumor	Progressive	30
 Atypical Teratoid Rhabdoid Tumor	Recurrence	3
+B Acute Lymphoblastic Leukemia/Lymphoma	Initial CNS Tumor	2
 B Acute Lymphoblastic Leukemia/Lymphoma	Not Reported	2
 B Acute Lymphoblastic Leukemia/Lymphoma	Primary Tumor	92
 B Acute Lymphoblastic Leukemia/Lymphoma	Progressive	2
@@ -32,11 +33,23 @@ Chordoma	Initial CNS Tumor	13
 Chordoma	Progressive	10
 Chordoma	Recurrence	3
 Choroid plexus carcinoma	Initial CNS Tumor	19
+Choroid plexus tumor	Initial CNS Tumor	6
 Chronic Myelogenous Leukemia	Primary Tumor	4
 Clear cell sarcoma of the kidney	Primary Tumor	24
+<<<<<<< HEAD
+=======
+CNS Burkitt's lymphoma	Initial CNS Tumor	2
+CNS Embryonal tumor	Initial CNS Tumor	30
+CNS Embryonal tumor	Progressive	11
+CNS Embryonal tumor	Recurrence	5
+CNS Melanoma	Initial CNS Tumor	2
+CNS neuroblastoma	Initial CNS Tumor	4
+CNS neuroblastoma	Recurrence	1
+>>>>>>> a559b09336e495501fa643018b8e340e0def56e2
 Craniopharyngioma	Initial CNS Tumor	71
 Craniopharyngioma	Progressive	18
 Craniopharyngioma	Recurrence	5
+Desmoid-type fibromatosis	Progressive	1
 Desmoplastic infantile astrocytoma and ganglioglioma	Initial CNS Tumor	2
 Desmoplastic infantile astrocytoma and ganglioglioma	Progressive	4
 Diffuse fibrillary astrocytoma	Initial CNS Tumor	8
@@ -53,8 +66,9 @@ Dysembryoplastic neuroepithelial tumor	Primary Tumor	2
 Dysembryoplastic neuroepithelial tumor	Progressive	15
 Dysembryoplastic neuroepithelial tumor	Recurrence	9
 Dysgerminoma	Primary Tumor	2
+Embryonal tumor	Initial CNS Tumor	4
 Embryonal Tumor NOS	Primary Tumor	2
-Embryonal tumor with multilayer rosettes	Initial CNS Tumor	6
+Embryonal tumor with multilayer rosettes	Initial CNS Tumor	7
 Embryonal tumor with multilayer rosettes	Progressive	3
 Embryonal tumor with multilayer rosettes	Recurrence	2
 Ependymoma	Initial CNS Tumor	347
@@ -66,39 +80,44 @@ Ewing sarcoma	Initial CNS Tumor	28
 Ewing sarcoma	Primary Tumor	6
 Ewing sarcoma	Progressive	10
 Ewing sarcoma	Recurrence	6
+Fibromyxoid lesion	Second Malignancy	3
 Ganglioglioma	Initial CNS Tumor	150
 Ganglioglioma	Progressive	30
 Ganglioglioma	Recurrence	14
 Ganglioneuroblastoma	Initial CNS Tumor	7
 Ganglioneuroblastoma	Primary Tumor	180
 Ganglioneuroblastoma	Recurrence	3
+Ganglioneuroma	Initial CNS Tumor	5
 Ganglioneuroma	Primary Tumor	6
+Ganglioneuroma	Progressive	2
 Germ Cell Tumor	Primary Tumor	4
 Germinoma	Initial CNS Tumor	14
 Germinoma	Progressive	2
-Glial-neuronal tumor NOS	Initial CNS Tumor	26
+Glial-neuronal tumor NOS	Initial CNS Tumor	30
 Glial-neuronal tumor NOS	Progressive	6
 Glial-neuronal tumor NOS	Recurrence	5
 Gliomatosis Cerebri	Initial CNS Tumor	3
+Gliosarcoma	Initial CNS Tumor	5
 Hemangioblastoma	Initial CNS Tumor	15
 Hemangioblastoma	Progressive	5
 Hepatoblastoma	Primary Tumor	8
 Hepatocellular Carcinoma	Primary Tumor	2
-High-grade glioma/astrocytoma	Initial CNS Tumor	364
+High-grade glioma/astrocytoma	Initial CNS Tumor	366
 High-grade glioma/astrocytoma	Primary Tumor	3
-High-grade glioma/astrocytoma	Progressive	104
+High-grade glioma/astrocytoma	Progressive	106
 High-grade glioma/astrocytoma	Progressive Disease Post-Mortem	2
 High-grade glioma/astrocytoma	Recurrence	54
 High-grade glioma/astrocytoma	Second Malignancy	15
-Histiocytic Tumor	Primary Tumor	6
-Histiocytic Tumor	Progressive	4
+Histiocytic tumor	Initial CNS Tumor	3
+Histiocytic tumor	Primary Tumor	6
+Histiocytic tumor	Progressive	4
 Hodgkin's lymphoma	Recurrence	2
 Infantile Fibrosarcoma	Primary Tumor	4
 Inflammatory Myofibroblastic Tumor	Primary Tumor	8
 Inflammatory Myofibroblastic Tumor	Progressive	2
 Inflammatory Myofibroblastic Tumor	Recurrence	2
 Intrahepatic Cholangiocarcinoma	Primary Tumor	1
-Juvenile xanthogranuloma	Initial CNS Tumor	2
+Juvenile xanthogranuloma	Initial CNS Tumor	6
 Juvenile xanthogranuloma	Primary Tumor	2
 Langerhans Cell histiocytosis	Initial CNS Tumor	22
 Langerhans Cell histiocytosis	Primary Tumor	8
@@ -109,7 +128,7 @@ Low-grade glioma/astrocytoma	Primary Tumor	6
 Low-grade glioma/astrocytoma	Progressive	179
 Low-grade glioma/astrocytoma	Recurrence	44
 Low-grade glioma/astrocytoma	Second Malignancy	3
-Malignant peripheral nerve sheath tumor	Initial CNS Tumor	8
+Malignant peripheral nerve sheath tumor	Initial CNS Tumor	5
 Malignant peripheral nerve sheath tumor	Primary Tumor	5
 Malignant peripheral nerve sheath tumor	Progressive	1
 Malignant peripheral nerve sheath tumor	Recurrence	3
@@ -117,8 +136,9 @@ Medulloblastoma	Initial CNS Tumor	383
 Medulloblastoma	Primary Tumor	2
 Medulloblastoma	Progressive	27
 Medulloblastoma	Recurrence	12
+Melanocytic tumor	Initial CNS Tumor	3
 Melanoma	Progressive	2
-Meningioma	Initial CNS Tumor	60
+Meningioma	Initial CNS Tumor	58
 Meningioma	Progressive	20
 Meningioma	Recurrence	14
 Meningioma	Second Malignancy	18
@@ -126,13 +146,17 @@ Metastatic secondary tumors	Initial CNS Tumor	15
 Metastatic secondary tumors	Progressive	2
 Mixed germ cell tumor	Initial CNS Tumor	2
 Mixed germ cell tumor	Progressive	5
+Myeloid Neoplasm	Primary Tumor	1
+Myofibroblastic tumor	Initial CNS Tumor	3
+Myofibroblastic tumor	Progressive	3
 Neuroblastoma	Initial CNS Tumor	12
-Neuroblastoma	Metastatic Tumor	2
-Neuroblastoma	Primary Tumor	1489
+Neuroblastoma	Metastatic	2
+Neuroblastoma	Primary Tumor	1480
 Neuroblastoma	Progressive	20
-Neuroblastoma	Recurrence	17
+Neuroblastoma	Recurrence	26
 Neurocytoma	Initial CNS Tumor	4
 Neurocytoma	Progressive	2
+Neuroepithelial neoplasm	Recurrence	3
 Neurofibroma/Plexiform	Initial CNS Tumor	39
 Neurofibroma/Plexiform	Primary Tumor	4
 Neurofibroma/Plexiform	Progressive	17
@@ -144,17 +168,19 @@ Oligodendroglioma	Progressive	2
 Oligodendroglioma	Recurrence	3
 Osteosarcoma	Primary Tumor	266
 Osteosarcoma	Progressive	2
-Osteosarcoma	Recurrence	2
-Osteosarcoma	Second Malignancy	2
+Osteosarcoma	Recurrence	4
+Osteosarcoma	Second Malignancy	6
 Pilocytic astrocytoma	Initial CNS Tumor	216
 Pilocytic astrocytoma	Progressive	33
 Pilocytic astrocytoma	Recurrence	6
 Pilocytic astrocytoma	Second Malignancy	2
+Pineal tumor	Initial CNS Tumor	1
 Pineoblastoma	Initial CNS Tumor	23
 Pineoblastoma	Progressive	3
+Pineocytoma	Initial CNS Tumor	2
 Pleomorphic xanthoastrocytoma	Initial CNS Tumor	19
 Pleomorphic xanthoastrocytoma	Progressive	2
-Pleomorphic xanthoastrocytoma	Recurrence	2
+Pleomorphic xanthoastrocytoma	Recurrence	4
 Primary CNS lymphoma	Initial CNS Tumor	1
 Retinoblastoma	Recurrence	2
 Rhabdoid tumor of the kidney	Primary Tumor	64
@@ -186,7 +212,6 @@ Thyroid Gland Follicular Carcinoma	Primary Tumor	2
 Thyroid Gland Papillary Carcinoma	Primary Tumor	43
 Thyroid Gland Papillary Carcinoma	Progressive	7
 Thyroid Gland Papillary Carcinoma	Second Malignancy	2
-Wilms tumor	Metastatic	1
-Wilms tumor	Metastatic Tumor	1
+Wilms tumor	Metastatic	2
 Wilms tumor	Primary Tumor	298
 Wilms tumor	Recurrence	15

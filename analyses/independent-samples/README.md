@@ -1,7 +1,17 @@
 # Independent Samples
 
 ## Module authors
-Komal Rathi, Run Jin, Yuanchao Zhang
+Komal Rathi, Run Jin, Yuanchao Zhang, Jo Lynne Rokita
+
+## Generating sample lists
+
+There are two modes for generating independent sample lists:
+
+- _Release mode_: Pre-release independent sample lists are generated using the `histologies-base.tsv` file, and these lists are used to run modules specific to release (eg: `fusion_filtering`).
+`OPENPBTA_BASE_SUBTYPING=1 bash run-independent-samples.sh`
+
+- _Analysis mode_: Independent sample lists are generated per cohort and per cohort and cancer group, which requires `histolologies.tsv`.
+`OPENPBTA_BASE_SUBTYPING=0 bash run-independent-samples.sh`
 
 ## Module structure
 
@@ -10,6 +20,8 @@ Komal Rathi, Run Jin, Yuanchao Zhang
 * `01-generate-independent-specimens-wxs-preferred.R`: Generate tables of WXS-preferred independent specimens where no two specimens are chosen from the same individual.
 * `02-generate-independent-rnaseq.R`: Generate tables of independent rna-seq specimens.
 * `03-qc-independent-samples.Rmd`: Markdown to tabulate number of biospecimen ids for same participant ids from each output file.
+* `04-generate-independent-specimens-rnaseq-pre-release.R`: Generate tables of RNA-Seq-only independent specimens where no two specimens are chosen from the same individual. 
+(Note: these tables will only be used for the `fusion_filtering` module runs pre-release).
 
 ```
 .
@@ -21,14 +33,18 @@ Komal Rathi, Run Jin, Yuanchao Zhang
 ├── 02-generate-independent-rnaseq.R
 ├── 03-qc-independent-samples.Rmd
 ├── 03-qc-independent-samples.nb.html
+├── 04-generate-independent-specimens-rnaseq-release.R
 ├── README.md
 ├── results
 │   ├── independent-specimens.rnaseq.primary-plus.eachcohort.tsv
 │   ├── independent-specimens.rnaseq.primary-plus.tsv
+│   ├── independent-specimens.rnaseq.primary-plus-pre-release.tsv
 │   ├── independent-specimens.rnaseq.primary.eachcohort.tsv
 │   ├── independent-specimens.rnaseq.primary.tsv
+│   ├── independent-specimens.rnaseq.primary-pre-release.tsv
 │   ├── independent-specimens.rnaseq.relapse.eachcohort.tsv
 │   ├── independent-specimens.rnaseq.relapse.tsv
+│   ├── independent-specimens.rnaseq.relapse-pre-release.tsv
 │   ├── independent-specimens.wgs.primary-plus.eachcohort.tsv
 │   ├── independent-specimens.wgs.primary-plus.tsv
 │   ├── independent-specimens.wgs.primary.eachcohort.tsv
@@ -161,11 +177,13 @@ When multiple RNA-Seq samples exist per participant, the script matches the inde
 1. **All-cohorts specific lists**
 
 * Primary RNA-Seq specimens matching WGS/WXS/Panel independent sample_ids plus only-RNA-Seq 
-`independent-specimens.rnaseq.primary-plus.tsv`
+`independent-specimens.rnaseq.primary-plus.tsv` and `independent-specimens.rnaseq.primary-plus-pre-release.tsv` 
 * Relapse RNA-Seq specimens matching WGS/WXS/Panel independent sample_ids plus only-RNA-Seq 
-`independent-specimens.rnaseq.primary.tsv`
+`independent-specimens.rnaseq.primary.tsv` and `independent-specimens.rnaseq.primary-pre-release.tsv`
 * Primary and Relapse RNA-Seq specimens matching WGS/WXS/Panel independent sample_ids plus only-RNA-Seq 
-`independent-specimens.rnaseq.relapse.tsv`
+`independent-specimens.rnaseq.relapse.tsv` and `independent-specimens.rnaseq.relapse-pre-release.tsv`
+
+Note: `*release.tsv` files are generated pre-release, require `histologies-base.tsv`, and are only being used to run `fusion_filtering`.
 
 2. **Each-cohort specific lists**
 

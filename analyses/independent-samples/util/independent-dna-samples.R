@@ -1,4 +1,4 @@
-# independent_samples.R
+# independent-dna-samples.R
 
 #' Generate a vector of unique samples
 #' 
@@ -10,7 +10,7 @@
 #' @param histology_df A data frame of samples, with columns corresponding to those
 #'   in `histologies.tsv`
 #' @param independent_level Designates whether we want to count independent samples in 
-#'  different cohorts as independent or not. "all-cohorts" consider the same sampe
+#'  different cohorts as independent or not. "all-cohorts" consider the same sample
 #'  in different cohorts as the same sample and "each-cohort" consider the same sample
 #'  in different cohorts as "independent" (different). 
 #' @param tumor_types Designates which types of tumors will be included. Options
@@ -22,16 +22,16 @@
 #' @param seed An optional random number seed. 
 #' 
 #' @return a data frame of Participant and Specimen IDs, each present only once.
-independent_samples <- function(histology_df, 
+independent_dna_samples <- function(histology_df, 
                                 tumor_types = c("primary", "relapse", "prefer_primary", "any"), 
-                                independent_level = c("all-cohorts", "each-cohort", "all-cohorts-release"),
+                                independent_level = c("each-cohort", "all-cohorts", "all-cohorts-pre-release"),
                                 seed){
   tumor_types <- match.arg(tumor_types)
   independent_level <- match.arg(independent_level)
   if(!missing(seed)){set.seed(seed)}
   
   primary_descs <- c("Initial CNS Tumor", "Primary Tumor")
-  relapse_descs <- c("Recurrence", "Progressive", "Progressive Disease Post Mortem")
+  relapse_descs <- c("Recurrence", "Progressive", "Progressive Disease Post-Mortem")
   
   if(tumor_types %in% c("prefer_primary")){
     # find cases where non-primary is the only option
@@ -111,12 +111,11 @@ independent_samples <- function(histology_df,
     return(independent_all)
   }
   
-  
-  if(independent_level == "all-cohorts-release"){
+  if(independent_level == "all-cohorts-pre-release"){
     
     independent_all <- sample_df %>%
       dplyr::distinct(Kids_First_Participant_ID, .keep_all = TRUE) %>%
-      dplyr::select(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, cohort, tumor_descriptor) %>%
+      dplyr::select(Kids_First_Participant_ID, Kids_First_Biospecimen_ID, cohort, experimental_strategy, tumor_descriptor) %>%
       arrange(Kids_First_Biospecimen_ID)
     
     return(independent_all)

@@ -17,7 +17,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 if [[ "$RUN_FOR_SUBTYPING" -eq "1" ]]
 then
 	# Run rna-seq only
-	Rscript 04-generate-independent-specimens-rnaseq-release.R
+	Rscript 04-generate-independent-specimens-rnaseq-pre-release.R
 else 
 	# run initial script
 	Rscript -e "rmarkdown::render('00-repeated-samples.Rmd',params=list(base_run = ${RUN_FOR_SUBTYPING}), clean = TRUE)"
@@ -33,6 +33,9 @@ else
 
 	# run script to generate rnaseq lists
 	Rscript 02-generate-independent-rnaseq.R
+	
+	# run script to generate methylation lists
+	Rscript 05-generate-independent-specimens-methyl.R
   
 	# run summary on output files
 	Rscript -e "rmarkdown::render('03-qc-independent-samples.Rmd', clean = TRUE)"

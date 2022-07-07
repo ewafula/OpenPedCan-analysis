@@ -1,7 +1,7 @@
 # Independent Samples
 
 ## Module authors
-Komal Rathi, Run Jin, Yuanchao Zhang, Jo Lynne Rokita
+Komal Rathi, Run Jin, Yuanchao Zhang, Eric Wafula, Jo Lynne Rokita
 
 ## Generating sample lists
 
@@ -33,18 +33,19 @@ There are two modes for generating independent sample lists:
 ├── 02-generate-independent-rnaseq.R
 ├── 03-qc-independent-samples.Rmd
 ├── 03-qc-independent-samples.nb.html
-├── 04-generate-independent-specimens-rnaseq-release.R
+├── 04-generate-independent-specimens-rnaseq-pre-release.R
+├── 05-generate-independent-specimens-methyl.R
 ├── README.md
 ├── results
-│   ├── independent-specimens.rnaseq.primary-plus.eachcohort.tsv
-│   ├── independent-specimens.rnaseq.primary-plus.tsv
-│   ├── independent-specimens.rnaseq.primary-plus-pre-release.tsv
-│   ├── independent-specimens.rnaseq.primary.eachcohort.tsv
-│   ├── independent-specimens.rnaseq.primary.tsv
-│   ├── independent-specimens.rnaseq.primary-pre-release.tsv
-│   ├── independent-specimens.rnaseq.relapse.eachcohort.tsv
-│   ├── independent-specimens.rnaseq.relapse.tsv
-│   ├── independent-specimens.rnaseq.relapse-pre-release.tsv
+│   ├── independent-specimens.rnaseqpanel.primary-plus.eachcohort.tsv
+│   ├── independent-specimens.rnaseqpanel.primary-plus.tsv
+│   ├── independent-specimens.rnaseqpanel.primary-plus.pre-release.tsv
+│   ├── independent-specimens.rnaseqpanel.primary.eachcohort.tsv
+│   ├── independent-specimens.rnaseqpanel.primary.tsv
+│   ├── independent-specimens.rnaseqpanel.primary.pre-release.tsv
+│   ├── independent-specimens.rnaseqpanel.relapse.eachcohort.tsv
+│   ├── independent-specimens.rnaseqpanel.relapse.tsv
+│   ├── independent-specimens.rnaseqpanel.relapse.pre-release.tsv
 │   ├── independent-specimens.wgs.primary-plus.eachcohort.tsv
 │   ├── independent-specimens.wgs.primary-plus.tsv
 │   ├── independent-specimens.wgs.primary.eachcohort.tsv
@@ -52,20 +53,20 @@ There are two modes for generating independent sample lists:
 │   ├── independent-specimens.wgs.relapse.eachcohort.tsv
 │   ├── independent-specimens.wgs.relapse.tsv
 │   ├── independent-specimens.wgswxspanel.primary-plus.eachcohort.prefer.wxs.tsv
-│   ├── independent-specimens.wgswxspanel.primary-plus.eachcohort.tsv
+│   ├── independent-specimens.wgswxspanel.primary-plus.eachcohort.prefer.wgs.tsv
 │   ├── independent-specimens.wgswxspanel.primary-plus.prefer.wxs.tsv
-│   ├── independent-specimens.wgswxspanel.primary-plus.tsv
+│   ├── independent-specimens.wgswxspanel.primary-plus.prefer.wgs.tsv
 │   ├── independent-specimens.wgswxspanel.primary.eachcohort.prefer.wxs.tsv
-│   ├── independent-specimens.wgswxspanel.primary.eachcohort.tsv
+│   ├── independent-specimens.wgswxspanel.primary.eachcohort.prefer.wgs.tsv
 │   ├── independent-specimens.wgswxspanel.primary.prefer.wxs.tsv
-│   ├── independent-specimens.wgswxspanel.primary.tsv
+│   ├── independent-specimens.wgswxspanel.primary.prefer.wgs.tsv
 │   ├── independent-specimens.wgswxspanel.relapse.eachcohort.prefer.wxs.tsv
-│   ├── independent-specimens.wgswxspanel.relapse.eachcohort.tsv
+│   ├── independent-specimens.wgswxspanel.relapse.eachcohort.prefer.wgs.tsv
 │   ├── independent-specimens.wgswxspanel.relapse.prefer.wxs.tsv
-│   └── independent-specimens.wgswxspanel.relapse.tsv
+│   └── independent-specimens.wgswxspanel.relapse.prefer.wgs.tsv
 ├── run-independent-samples.sh
 └── util
-    ├── independent-samples.R
+    ├── independent-dna-samples.R
     └── independent_rna_samples.R
 ```
 
@@ -101,14 +102,14 @@ These lists contain only WGS samples:
 
 ### WGS-preferred lists
 
-For WGS-preferred lists, when a `Kids_First_Participant_ID` is associated with multiple `experimental_strategy` values i.e. `WGS`, `WXS` or `Targeted Sequencing`, priority is given to a single randomly chosen `WGS` biospecimen first, followed by either a single randomly chosen `WXS` or `Targeted Sequencing` sample.
+For WGS-preferred lists, when a `Kids_First_Participant_ID` is associated with multiple `experimental_strategy` values i.e. `WGS`, `WXS` or `Targeted Sequencing`, priority is given to a single randomly chosen `WGS` biospecimen first, followed by a single randomly chosen `WXS` and lastly a single randomly chosen `Targeted Sequencing` sample.
 
 After randomizing the histology file subset to tumor samples:
 
 ```
 tumor_samples <- histology_df %>%
   dplyr::filter(sample_type == "Tumor", 
-                composition == "Solid Tissue" | composition == "Bone Marrow", 
+                composition = "Derived Cell Line", 
                 experimental_strategy %in% c("WGS", "WXS", "Targeted Sequencing"))
 ```
 
@@ -117,33 +118,33 @@ For WGS-preferred lists, we first subset the **tumor samples** to `WGS` samples 
 1. **All-cohorts specific lists**
 
 * Primary specimens only with either WGS or whole exome sequence (WXS) or Panel:  
-`independent-specimens.wgswxspanel.primary.tsv`
+`independent-specimens.wgswxspanel.primary.prefer.wgs.tsv`
 * Relapse specimens only with either WGS or whole exome sequence (WXS) or Panel:  
-`independent-specimens.wgswxspanel.relapse.tsv`
+`independent-specimens.wgswxspanel.relapse.prefer.wgs.tsv`
 * Primary and relapse specimens with WGS or WXS or Panel:  
-`independent-specimens.wgswxspanel.primary-plus.tsv`
+`independent-specimens.wgswxspanel.primary-plus.prefer.wgs.tsv`
 
 2. **Each-cohort specific lists**
 
 * Primary specimens only with either WGS or whole exome sequence (WXS) or Panel:  
-`independent-specimens.wgswxspanel.primary.eachcohort.tsv`
+`independent-specimens.wgswxspanel.primary.eachcohort.prefer.wgs.tsv`
 * Relapse specimens only with either WGS or whole exome sequence (WXS) or Panel:  
-`independent-specimens.wgswxspanel.relapse.eachcohort.tsv`
+`independent-specimens.wgswxspanel.relapse.eachcohort.prefer.wgs.tsv`
 * Primary and relapse specimens with WGS or WXS or Panel:  
-`independent-specimens.wgswxspanel.primary-plus.eachcohort.tsv`
+`independent-specimens.wgswxspanel.primary-plus.eachcohort.prefer.wgs.tsv`
 
 ### WXS-preferred lists
 
 Additionally, similar independent lists that consist of all DNA `experimental_strategy` were generated prioriting `WXS` specimens when both WXS and WGS samples were available - this independent list will be used for analyzing SNV datasets since WXS gives higher coverage for coding regions and hence, better chance of detecting SNV.
 
-For WXS-preferred lists, when a `Kids_First_Participant_ID` is associated with multiple `experimental_strategy` values i.e. `WGS`, `WXS` or `Targeted Sequencing`, priority is given to a single randomly chosen `WXS` biospecimen first, followed by either a single randomly chosen `WGS` or `Targeted Sequencing` sample.
+For WXS-preferred lists, when a `Kids_First_Participant_ID` is associated with multiple `experimental_strategy` values i.e. `WGS`, `WXS` or `Targeted Sequencing`, priority is given to a single randomly chosen `WXS` biospecimen first, followed by a single randomly chosen `WGS` and lastly a single randomly chosen `Targeted Sequencing` sample.
 
 After randomizing the histology file subset to tumor samples:
 
 ```
 tumor_samples <- histology_df %>%
   dplyr::filter(sample_type == "Tumor", 
-                composition == "Solid Tissue" | composition == "Bone Marrow", 
+                composition = "Derived Cell Line", 
                 experimental_strategy %in% c("WGS", "WXS", "Targeted Sequencing"))
 ```
 
@@ -177,22 +178,33 @@ When multiple RNA-Seq samples exist per participant, the script matches the inde
 1. **All-cohorts specific lists**
 
 * Primary RNA-Seq specimens matching WGS/WXS/Panel independent sample_ids plus only-RNA-Seq 
-`independent-specimens.rnaseq.primary-plus.tsv` and `independent-specimens.rnaseq.primary-plus-pre-release.tsv` 
+`independent-specimens.rnaseqpanel.primary-plus.tsv` and `independent-specimens.rnaseqpanel.primary-plus.pre-release.tsv` 
 * Relapse RNA-Seq specimens matching WGS/WXS/Panel independent sample_ids plus only-RNA-Seq 
-`independent-specimens.rnaseq.primary.tsv` and `independent-specimens.rnaseq.primary-pre-release.tsv`
+`independent-specimens.rnaseqpanel.primary.tsv` and `independent-specimens.rnaseqpanel.primary.pre-release.tsv`
 * Primary and Relapse RNA-Seq specimens matching WGS/WXS/Panel independent sample_ids plus only-RNA-Seq 
-`independent-specimens.rnaseq.relapse.tsv` and `independent-specimens.rnaseq.relapse-pre-release.tsv`
+`independent-specimens.rnaseqpanel.relapse.tsv` and `independent-specimens.rnaseqpanel.relapse.pre-release.tsv`
 
-Note: `*release.tsv` files are generated pre-release, require `histologies-base.tsv`, and are only being used to run `fusion_filtering`.
+Note: `*pre-release.tsv` files are generated pre-release, require `histologies-base.tsv`, and are only being used to run `fusion_filtering`.
 
 2. **Each-cohort specific lists**
 
 * Primary RNA-Seq specimens matching WGS/WXS/Panel independent sample_ids plus only-RNA-Seq 
-`independent-specimens.rnaseq.primary-plus.eachcohort.tsv`
+`independent-specimens.rnaseqpanel.primary-plus.eachcohort.tsv`
 * Relapse RNA-Seq specimens matching WGS/WXS/Panel independent sample_ids plus only-RNA-Seq 
-`independent-specimens.rnaseq.primary.eachcohort.tsv`
+`independent-specimens.rnaseqpanel.primary.eachcohort.tsv`
 * Primary and Relapse RNA-Seq specimens matching WGS/WXS/Panel independent sample_ids plus only-RNA-Seq 
-`independent-specimens.rnaseq.relapse.eachcohort.tsv`
+`independent-specimens.rnaseqpanel.relapse.eachcohort.tsv`
+
+### Methylation lists
+
+These lists contain independent methylation array samples:
+
+* Primary specimens:  
+`independent-specimens.methyl.primary.tsv`
+* Relapse specimens:  
+`independent-specimens.methyl.primary.tsv`
+* Primary and relapse:  
+`independent-specimens.methyl.primary-plus.tsv`
 
 ## Generating sample lists
 
